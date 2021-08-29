@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap');
+:root {
+    /* Fonts */
+    --staatliches: 'Staatliches';
+    --arvo: 'Arvo';
+    --inconsolata: 'Inconsolata';
+    /* Colors */
+    --purple: #531CB3;
+    --purple-plum: #944BBB;
+    --radical-red: #FF3562;
+    --lavender-blush: #F9E7E7;
+    --melon: #F7BFB4;
+    --middle-grey: #8A817C;
+    --dark: #212529;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #555;
+}
+
+main {
+    overflow-x: hidden;
+}
+
+.undeline::after {
+    content: '_';
+    margin-left: 2px;
+}
+
+span,
+a,
+dt {
+    font-family: var(--arvo), serif;
+}
+
+p {
+    font-family: var(--inconsolata), monospace;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+    display: block;
+}
+
+#preloader {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background: linear-gradient(39deg, rgba(148, 75, 187, 1) 0%, rgba(83, 28, 179, 1) 58%, rgba(255, 53, 98, 1) 100%, rgba(247, 191, 180, 1) 100%);
+}
+
+#preloader #circle-preloader {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    opacity: 0.85;
+    box-shadow: 0 0 4px #f9e7e7;
+    background-color: #F9E7E7;
+    animation: preloader-blink 1s infinite;
+}
+
+@keyframes preloader-blink {
+    0% {
+        width: 0px;
+        height: 0px;
+    }
+    50% {
+        width: 30px;
+        height: 30px;
+    }
+    100% {
+        opacity: 0;
+        width: 60px;
+        height: 60px;
+        box-shadow: 0 0 20px #f9e7e7;
+    }
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.cursor:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.customScrollbar-y {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.customScrollbar-x {
+    overflow-y: hidden !important;
+    overflow-x: auto !important;
+}
+
+.customScrollbar-y::-webkit-scrollbar {
+    width: 5px;
+}
+
+.customScrollbar-x::-webkit-scrollbar {
+    width: 30px!important;
+    height: 5px;
+}
+
+.customScrollbar-y::-webkit-scrollbar-track,
+.customScrollbar-x::-webkit-scrollbar-track {
+    background-color: var(--lavender-blush) !important;
+}
+
+.customScrollbar-y::-webkit-scrollbar-thumb,
+.customScrollbar-x::-webkit-scrollbar-thumb {
+    background-color: var(--dark) !important;
+    border-radius: 50px !important;
+}
