@@ -13,31 +13,30 @@
     <title>Renzo Nogueira</title>
 </head>
 
-<body>
+<body class="customScrollbar-y">
     <div id="app">
         <main>
             <!-- Header -->
             <header id="header-home">
                 <!-- Nav Menu -->
                 <div class="menu">
-                    <nav class="px-5 nav-menu d-none d-lg-block d-xl-block d-xxl-block position-fixed top-0">
-                        <div id="menu-desktop">
-                            <div id="links-menu">
-                                <links-menu
-                                    class="pt-4 px-4 nav nav-pills flex-column flex-sm-row text-uppercase fs-6 position-relative">
-                                </links-menu>
-                            </div>
+                    <nav id="menu-desktop"
+                        class="nav-pills px-5 nav-menu d-none d-lg-block d-xl-block d-xxl-block position-fixed top-0">
+                        <div id="links-menu">
+                            <links-menu
+                                class="pt-4 px-4 nav nav-pills flex-column flex-sm-row text-uppercase fs-6 position-relative">
+                            </links-menu>
                         </div>
                     </nav>
 
                     <nav
-                        class="pt-5 nav-mobile-menu d-sm-block d-md-block d-lg-none pt-4 px-4 nav nav-pills text-uppercase fs-6 position-fixed top-0">
+                        class="d-inline-flex p-4 p-md-3 bd-highlight nav-mobile-menu d-sm-block d-md-block d-lg-none px-4 nav nav-pills text-uppercase fs-6 position-fixed top-0">
                         <i v-on:click="togleMobileMenu()"
-                            class="mx-md-5 position-relative fas fa-bars text-light button-mobile-menu"></i>
+                            class="m-0 mx-md-5 fas fa-bars text-light button-mobile-menu"></i>
                         <div>
                             <div class="mobile-menu d-none position-fixed shadow"></div>
                             <div id="menu-mobile"
-                                class="mobile-menu-links d-none position-fixed d-flex flex-column justify-content-center align-items-center text-center">
+                                class="mobile-menu-links d-none position-fixed d-flex justify-content-center align-items-center text-center">
                                 <i onClick="app.togleMobileMenu()" class="m-5 fas fa-times text-light button-close-mobile-menu position-absolute top-0
                                     start-0"></i>
                                 <div id="links-menu-mobile">
@@ -74,17 +73,18 @@
 
                                 <div class="mt-5">
                                     <dl class="row contact-list">
-                                        <dt class="col-sm-3 text-uppercase">Idade :</dt>
-                                        <dd class="px-4 col-sm-9 text-light">{{(new Date().getFullYear()) - 2001}}
+                                        <dt class="col-12 col-md-4 text-uppercase">Idade :</dt>
+                                        <dd class="col-12 col-md-8 text-light">
+                                            {{(new Date().getFullYear()) - 2001}}
                                         </dd>
-                                        <dt class="col-sm-3 text-uppercase">Telefone :</dt>
-                                        <dd class="px-4 col-sm-9 text-light">(61) 996044897</dd>
-                                        <dt class="col-sm-3 text-uppercase">E-mail :</dt>
-                                        <dd class="px-4 col-sm-9"><a class="text-light text-decoration-none"
+                                        <dt class="col-12 col-md-4 text-uppercase">Telefone :</dt>
+                                        <dd class="col-12 col-md-8 text-light">(61) 996044897</dd>
+                                        <dt class="col-12 col-md-4 text-uppercase">E-mail :</dt>
+                                        <dd class="col-12 col-md-8"><a class="text-light text-decoration-none"
                                                 href="mailto: renzossnmail@gmail.com">renzossnmail@gmail.com</a>
                                         </dd>
-                                        <dt class="col-sm-3 text-uppercase">Endereço :</dt>
-                                        <dd class="px-4 col-sm-9 text-light">Riacho Fundo II Brasília DF</dd>
+                                        <dt class="col-12 col-md-4 text-uppercase">Endereço :</dt>
+                                        <dd class="col-12 col-md-8 text-light">Riacho Fundo II Brasília DF</dd>
                                     </dl>
                                     <div class="d-flex personal-profile_social">
                                         <a data-bs-toggle="tooltip" title="Gitgub" href="http://"><i
@@ -102,7 +102,7 @@
             </header>
             <!-- Header -->
 
-            <div class="px-2">
+            <div data-bs-spy="scroll" data-bs-target="#menu-desktop" data-bs-offset="0" tabindex="100" class="px-2">
                 <!-- Olá -->
                 <section id="section-hi" class="fw-normal container">
                     <div class="row">
@@ -116,6 +116,10 @@
                                     oportunidade.
                                 </p>
                             </div>
+                            <a download="assets/cv/cv-renzo-nogueira.pdf" href="assets/cv/cv-renzo-nogueira.pdf"
+                                type="button" class="btn btn-info btn-lg" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Fazer download do currículo"><span class="fs-5">Baixar
+                                    CV</span></a>
                         </div>
                     </div>
                 </section>
@@ -182,7 +186,8 @@
                             <div v-for="(item, index) in portifolio.data"
                                 class="position-relative row item-portifolio p-2 border shadow-sm rounded m-2">
                                 <div class="col-xs-12 py-2 col-md-6 portifolio-item-img">
-                                    <img class="img-thumbnail" :src="item.srcImg" :alt="item.title">
+                                    <img class="img-thumbnail" :src="item.srcImg" :title="item.title"
+                                        :alt="item.description">
                                 </div>
                                 <div class="row col-xs-12 col-xs-12 col-md-4 my-3  portifolio-item-body">
                                     <div class="col-12">
@@ -214,8 +219,8 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div>
-                                                    <img :src="item.srcImg" :alt="item.title" class="img-fluid"
-                                                        :alt="item.title">
+                                                    <img :src="item.srcImg" :alt="item.description" class="img-fluid"
+                                                        :title="item.title">
                                                 </div>
                                                 <div class="mt-3">
                                                     <span class="fs-3">{{item.title}}</span>
@@ -256,8 +261,8 @@
                                     id="blog-last-publication">
                                     <div class="position-relative cursor">
                                         <img id="image-after-publication" :src="blog.data[0]?blog.data[0].srcImg:''"
-                                            :alt="blog.data[0]?blog.data[0].title:''" class="img-fluid img-thumbnail"
-                                            :alt="blog.data[0]?blog.data[0].title:''">
+                                            :alt="blog.data[0]?blog.data[0].description:''"
+                                            class="img-fluid img-thumbnail" :title="blog.data[0]?blog.data[0].title:''">
                                         <div class="badge text-nowrap position-absolute bottom-0 start-0 m-3"
                                             style="width: 6rem;">
                                             <span
@@ -289,11 +294,10 @@
                                             v-for="(item, index) in blog.data" v-if="index >= 1">
                                             <div v-on:click="openViewPostBlog(item)" :id="'post-'+index">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img :src="item.srcImg" :alt="item.title"
-                                                        class="blog-list-image img-fluid img-thumbnail rounded float-start"
-                                                        :alt="item.title">
+                                                    <img :title="item.title" :src="item.srcImg" :alt="item.description"
+                                                        class="blog-list-image img-fluid img-thumbnail rounded float-start">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col p-3">
                                                     <span>{{item.title}}</span>
                                                     <p class="text-truncate">{{item.description}}</p>
                                                 </div>
@@ -306,14 +310,16 @@
                                                     class="fas fa-angle-right"></i></button>
                                             <button v-else v-on:click="loadBlog(true)"
                                                 class="btn btn-small btn-dark m-2 rounded-pill"><i
-                                                    class="fas fa-angle-left"></i></i></button>
+                                                    class="fas fa-angle-left"></i></button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between px-4">
-                                    <i v-on:click="scrollbarPostsBlogBack"
+                                    <i data-bs-toggle="tooltip" data-bs-placement="top" title="Retroceder"
+                                        v-on:click="scrollbarPostsBlogBack"
                                         class="cursor fs-1 fas fa-angle-double-left"></i>
-                                    <i v-on:click="scrollbarPostsBlogMore"
+                                    <i data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar"
+                                        v-on:click="scrollbarPostsBlogMore"
                                         class="cursor fs-1 fas fa-angle-double-right"></i>
                                 </div>
                             </div>
@@ -324,7 +330,7 @@
                         <div class="containerViewPostBlog position-fixed top-50 start-50 translate-middle d-none">
                         </div>
                         <div v-if="(blog.selectedPost != null)"
-                            class="position-fixed top-50 start-50 translate-middle viewPostBlog p-4 shadow rounded customScrollbar-y">
+                            class="position-fixed top-50 start-50 translate-middle viewPostBlog p-4 shadow rounded d-none customScrollbar-y">
                             <div class="button-close-post-blog d-flex align-items-center justify-content-end p-3">
                                 <button v-on:click="closeViewPostBlog" type="button" class="fs-4 btn-close float-end"
                                     aria-label="Close"></button>
@@ -357,6 +363,121 @@
                         <!-- View Post Blog -->
                 </section>
                 <!-- Blog -->
+
+                <!-- Orçamento -->
+                <section id="section-orcamento" class="container mt-5 fw-normal">
+                    <div>
+                        <div class="sub-section-title mb-5">
+                            <span class="undeline fw-lighter fs-7">Pedir um orçamento</span>
+                        </div>
+                        <div id="contents-orcamento" class="row mt-3 px-3 py-5 contents-blog position-relative">
+                            <div class="text-center">
+                                <h1 class="fs-4">Faça um orçamento para o seu site agora</h1>
+                            </div>
+                            <div class="container-fluid justify-content-center row">
+                                <div class="col-auto mt-3 text-center">
+                                    <img class="img-fluid" src="assets/img/developing.png" alt="developing">
+                                </div>
+                                <div
+                                    class="col-auto mt-5 mt-md-0 mt-lg-0 mt-xl-0 mt-xxl-0 d-flex justify-content-center flex-column">
+                                    <h2 class="fs-5 mb-3">Crie seu orçamento agora</h2>
+                                    <button v-on:click="openViewOrcamento" data-bs-toggle="tooltip"
+                                        data-bs-placement="left"
+                                        title="Preencha um formulário para calcular o seu orçamento" type="button"
+                                        class="mt-3 btn btn-lg btn-outline-dark">Abrir formulário <i
+                                            class="fas fa-hand-point-up"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- View Post Blog -->
+                        <div class="containerOrcamento position-fixed top-50 start-50 translate-middle d-none">
+                        </div>
+                        <div
+                            class="viewOrcamento d-none position-fixed top-50 start-50 translate-middle p-4 shadow rounded customScrollbar-y">
+                            <div class="button-close-post-blog d-flex align-items-center justify-content-end p-3">
+                                <button v-on:click="closeViewOrcamento" type="button" class="fs-4 btn-close float-end"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div>
+                                <!-- Carousel -->
+                                <div id="carouselorcamento" class="carousel slide position-relative customScrollbar-y"
+                                    data-bs-ride="carousel" data-interval="false">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                                <div>
+                                                    <h1 class="fs-3">Informações pessoais</h1>
+                                                </div>
+                                                <form class="row mt-5">
+                                                    <div class="col-12 row">
+                                                        <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+                                                            <label for="inputPassword6"
+                                                                class="col-form-label">Nome:</label>
+                                                        </div>
+                                                        <div class="col-12 mb-3 col-sm-4">
+                                                            <input type="password" id="inputNomeOrcamento"
+                                                                class="form-control" placeholder="Nome"
+                                                                aria-describedby="passwordHelpInline">
+                                                        </div>
+                                                        <div class="col-12 col-sm-4">
+                                                            <input type="password" id="inputSobrenomeOrcamento"
+                                                                class="form-control" placeholder="Sobrenome"
+                                                                aria-describedby="passwordHelpInline">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 row">
+                                                        <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+                                                            <label for="inputPassword6"
+                                                                class="col-form-label">E-mail:</label>
+                                                        </div>
+                                                        <div class="col-12 mb-3 col-sm-4">
+                                                            <input type="email" id="inputEmailOrcamento"
+                                                                class="form-control" placeholder="email@email..."
+                                                                aria-describedby="email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 row">
+                                                        <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+                                                            <label for="inputPassword6"
+                                                                class="col-form-label">Telefone/Celular:</label>
+                                                        </div>
+                                                        <div class="col-1 mb-3">
+                                                            <input type="password" id="inputDDOrcamento"
+                                                                class="form-control" placeholder="DD"
+                                                                aria-describedby="passwordHelpInline">
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <input type="password" id="inputNumeroOrcamento"
+                                                                class="form-control" placeholder="Número"
+                                                                aria-describedby="passwordHelpInline">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                        <div class="carousel-item">
+                                            b
+                                        </div>
+                                        <div class="carousel-item">
+                                            c
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn text-dark position-absolute bottom-0 start-0 m-5" type="button"
+                                    data-bs-target="#carouselorcamento" data-bs-slide="prev">
+                                    <i class="fas fa-chevron-left"></i> Anterior
+                                </button>
+                                <button class="btn text-dark position-absolute bottom-0 end-0 m-5" type="button"
+                                    data-bs-target="#carouselorcamento" data-bs-slide="next">
+                                    Próximo <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- View Post Blog -->
+                </section>
+                <!-- Orçamento -->
             </div>
         </main>
 
@@ -459,7 +580,9 @@ var app = new Vue({
                     backgroundColor: 'white',
                     boxShadow: '#531cb3 0px 2px 12px -10px'
                 })
+                $('nav').addClass('scrollOn')
                 $('#links-menu').children().children().removeClass('text-light').addClass('text-dark')
+                $('nav').children().removeClass('text-light').addClass('text-dark')
                 $('nav').children().removeClass('text-light').addClass('text-dark')
                 $('#links-menu').children().css({
                     top: -15
@@ -468,6 +591,7 @@ var app = new Vue({
                     top: -22
                 })
             } else {
+                $('nav').removeClass('scrollOn')
                 $('#links-menu').children().children().removeClass('text-dark').addClass('text-light')
                 $('nav').children().removeClass('text-dark').addClass('text-light')
                 $('nav').css({
@@ -532,7 +656,6 @@ var app = new Vue({
         },
         openViewPostBlog: function(el) {
             this.blog.selectedPost = el
-            console.log('teste')
             setTimeout(function() {
                 $('.containerViewPostBlog').removeClass('d-none')
                 $('.viewPostBlog').removeClass('d-none')
@@ -562,8 +685,21 @@ var app = new Vue({
                         }
                     });
             }
-        }
+        },
         // Blog
+        // Orçamento
+        closeViewOrcamento: function(el) {
+            $('.containerOrcamento').toggleClass('d-none')
+            $('.viewOrcamento').toggleClass('d-none')
+        },
+        openViewOrcamento: function(el) {
+            this.blog.selectedPost = el
+            setTimeout(function() {
+                $('.containerOrcamento').removeClass('d-none')
+                $('.viewOrcamento').removeClass('d-none')
+            }, 100)
+        },
+        // Orçamento
     },
     mounted: function() {
         window.addEventListener('scroll', () => {
@@ -571,7 +707,12 @@ var app = new Vue({
         })
         window.onload = function() {
             $('#preloader').addClass('d-none')
-
+            var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+                target: '#menu-desktop'
+            })
+            $(document).ready(function() { // Pausa carousel
+                $('#carouselorcamento').carousel('pause');
+            });
         }
     },
     beforeMount: function() {
@@ -629,10 +770,22 @@ Vue.component('links-menu', {
                                         href="#section-habilidades-gerais">Conhecimentos</a>
                                     <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light"
                                         href="#section-portifolio">Portifólio</a>
-                                    <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light"
-                                        href="#section-blog">Blog</a>
-                                    <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light"
-                                        href="#">Contato</a>
+                                        <div class="dropdown">
+                                            <span class="cursor text-sm-center nav-link text-light dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Mais 
+                                            </span>
+                                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                                <li><a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light"
+                                                                                    href="#section-blog">Blog</a></li>
+                                                <li> <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light"
+                                                                                    href="#section-orcamento">Orçamento</a></li>
+                                                <li><a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light"
+                                                                                    href="#">Contato</a></li>
+                                        </ul>
+</div>
+                                    
+                                   
+                                    
                                 </div>
                                 `
 })
