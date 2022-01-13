@@ -69,7 +69,7 @@
                                     <dl class="row contact-list">
                                         <dt class="col-12 col-md-4 text-uppercase">Idade :</dt>
                                         <dd class="col-12 col-md-8 text-light">
-                                            {{(new Date().getFullYear()) - 2001}}
+                                            {{new Date().getMonth() >= 5 ? ((new Date().getFullYear()) - 2001) : ((new Date().getFullYear()) - 2002)}}
                                         </dd>
                                         <dt class="col-12 col-md-4 text-uppercase">Telefone :</dt>
                                         <dd class="col-12 col-md-8 text-light">(61) 996044897</dd>
