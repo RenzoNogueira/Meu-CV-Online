@@ -273,7 +273,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-between px-4">
+                                <div class="d-flex justify-content-between py-3 px-4">
                                     <i data-bs-toggle="tooltip" data-bs-placement="top" title="Retroceder" v-on:click="scrollbarPostsBlogBack" class="cursor fs-1 fas fa-angle-double-left"></i>
                                     <i data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" v-on:click="scrollbarPostsBlogMore" class="cursor fs-1 fas fa-angle-double-right"></i>
                                 </div>
@@ -434,10 +434,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="accordion-item mt-2">
-                                        <h2 class="accordion-header " id="dadosEmpresa-headingTwo">
-                                            <button disabled class="accordion-button" type="button" data-bs-toggle="collapse" :data-bs-target="dadosFormOrcamento.tipoIdentificacao == 2 ? '#dadosEmpresa-collapseTwo' : ''" aria-expanded="true" aria-controls="dadosEmpresa-collapseTwo">
-                                                Dados da Empresa <i class="fa-duotone fa-lock"></i>
+                                    <div v-if="dadosFormOrcamento.tipoIdentificacao == 2" class="accordion-item mt-2">
+                                        <h2 class="accordion-header" id="dadosEmpresa-headingTwo">
+                                            <button :disabled="dadosFormOrcamento.tipoIdentificacao != 2" class="accordion-button" type="button" data-bs-toggle="collapse" :data-bs-target="dadosFormOrcamento.tipoIdentificacao == 2 ? '#dadosEmpresa-collapseTwo' : ''" aria-expanded="true" aria-controls="dadosEmpresa-collapseTwo">
+                                                Dados da Empresa
                                             </button>
                                         </h2>
                                         <div id="dadosEmpresa-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="dadosEmpresa-headingTwo">
@@ -446,8 +446,8 @@
                                                 <form class="row">
                                                     <div class="col-6 mt-2">
                                                         <div class="form-floating">
-                                                            <input type="text" name="first_name" class="form-control" id="nomeOrcamento" placeholder="Seu Nome">
-                                                            <label for="nomeOrcamento">Nome*</label>
+                                                            <input type="text" name="nome_empresa" class="form-control" id="nomeEmpresa" placeholder="Nome da Empresa">
+                                                            <label for="nomeEmpresa">Nome da Empresa*</label>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -473,13 +473,12 @@
 <script src="frameworks/jQuery-3.6/jquery-3.6.0.min.js"></script>
 <script src="frameworks/jQueryMask/dist/jquery.mask.min.js"></script>
 <script src="frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-</script>
-<script src="frameworks/fontawesome/fontawesome.js" crossorigin="anonymous">
-</script>
-<script src="frameworks/vue-js/vue.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="https://kit.fontawesome.com/274af9ab8f.js" crossorigin="anonymous"></script>
+<script src="frameworks/hover-bit/bit.js"></script>
 <script src="js/gooeyTextMorphSnippet.js"></script>
 <script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="frameworks/vue-js/vue.min.js"></script>
 <script src="js/components/vue-componenst.js"></script>
 <script src="js/home/script-vue-home.js"></script>
 
