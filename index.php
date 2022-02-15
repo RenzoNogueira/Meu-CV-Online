@@ -335,8 +335,8 @@
                             </div>
                         </div>
 
-                        <!-- <div class="viewOrcamento d-none position-fixed top-50 start-50 translate-middle p-4 shadow rounded customScrollbar-y"> -->
-                        <div class="viewOrcamento position-fixed top-50 start-50 translate-middle p-4 shadow rounded customScrollbar-y">
+                         <div class="viewOrcamento d-none position-fixed top-50 start-50 translate-middle p-4 shadow rounded customScrollbar-y"> 
+                        <!-- <div class="viewOrcamento position-fixed top-50 start-50 translate-middle p-4 shadow rounded customScrollbar-y"> -->
                             <div class="button-close-post-blog d-flex align-items-center justify-content-end p-3">
                                 <button v-on:click="closeViewOrcamento" type="button" class="fs-4 btn-close float-end" aria-label="Close"></button>
                             </div>
