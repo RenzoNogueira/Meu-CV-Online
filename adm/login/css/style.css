@@ -10980,7 +10980,9 @@ h5,
 }
 
 .bg-primary {
-    background: #fbceb5 !important;
+    /* background: #fbceb5 !important; */
+    /* Editado */
+    background-color: #fbceb5 !important;
 }
 
 .ftco-section {
@@ -11202,7 +11204,9 @@ textarea.form-control {
 }
 
 .btn.btn-primary {
-    background: #fbceb5 !important;
+    /* background: #fbceb5 !important; */
+    /* Editado */
+    background-color: #fbceb5 !important;
     border: 1px solid #fbceb5 !important;
     color: #000 !important;
 }
