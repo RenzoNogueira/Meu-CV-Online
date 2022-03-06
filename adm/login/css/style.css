@@ -5,6 +5,24 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+canvas {
+    z-index: 1 !important;
+    position: absolute;
+    top: 0;
+    opacity: 0.1;
+    transform-origin: 0 0;
+    width: 100%;
+    height: 100%;
+}
+
+#appLogin>section {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: -webkit-fill-available;
+}
+
 :root {
     --blue: #007bff;
     --indigo: #6610f2;

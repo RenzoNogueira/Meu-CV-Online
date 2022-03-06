@@ -14,7 +14,7 @@ require "../../php/constantes.php";
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(images/mountain-bg.jpg);">
 	<div id="appLogin">
 		<?php
 		require "../../pages/admimPage/login.html"; // Importação de página 
@@ -27,6 +27,8 @@ require "../../php/constantes.php";
 	<script src="../../frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 	<script src="../../js/components/vue-componenst.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
+	<script src="js/script.js"></script>
 	<script>
 		// Vue Js
 		var app = new Vue({
@@ -61,12 +63,13 @@ require "../../php/constantes.php";
 			watch: {},
 			mounted: function() {
 				const SELF = this
-					$('#preloader').addClass('d-none')
-					SELF.main()
-					setTimeout(function(){
-						$("input").prop( "disabled", false )
-   }, 600);
-					
+				$('#preloader').addClass('d-none')
+				SELF.main()
+				setTimeout(function() {
+					$("input").prop("disabled", false)
+				}, 600);
+
+
 			},
 		})
 	</script>
