@@ -1,0 +1,72 @@
+<!-- Nav Menu -->
+<div class="menu">
+    <nav id="menu-desktop" class="nav-pills px-5 nav-menu d-none d-lg-block d-xl-block d-xxl-block position-fixed top-0">
+        <div id="links-menu">
+            <links-menu class="pt-4 px-4 nav nav-pills flex-column flex-sm-row text-uppercase fs-6 position-relative">
+            </links-menu>
+        </div>
+    </nav>
+
+    <nav class="d-inline-flex p-4 p-md-3 bd-highlight nav-mobile-menu d-sm-block d-md-block d-lg-none px-4 nav nav-pills text-uppercase fs-6 position-fixed top-0">
+        <i v-on:click="togleMobileMenu()" class="m-0 mx-md-5 fas fa-bars text-light button-mobile-menu"></i>
+        <div>
+            <div class="mobile-menu d-none position-fixed shadow"></div>
+            <div id="menu-mobile" class="mobile-menu-links d-none position-fixed d-flex justify-content-center align-items-center text-center">
+                <i onClick="app.togleMobileMenu()" class="m-5 fas fa-times text-light button-close-mobile-menu position-absolute top-0
+                    start-0"></i>
+                <div id="links-menu-mobile">
+                    <links-menu></links-menu>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="personal-profile pt-5">
+        <div class="row container position-relative mt-5">
+            <div class="img-profile d-none d-lg-block d-xl-block d-xxl-block col-md-4 px-5 mb-4">
+                <img class="position-absolute" src="assets/img/img_avatar.jpg" alt="">
+            </div>
+            <div class="container col-xs-12 col-md-8 px-4 pb-4">
+                <h1 class="personal-profile-name text-light undeline">Renzo da Silva Soares Nogueira
+                </h1>
+                <!-- <span class="text-light">Desenvolvedor web</span> -->
+                <div id="textMorph">
+                    <span class="text-light" id="text1"></span>
+                    <span class="text-light" id="text2"></span>
+                </div>
+                <svg id="filters" class="d-none">
+                    <defs>
+                        <filter id="threshold">
+                            <!-- Basically just a threshold effect - pixels with a high enough opacity are set to full opacity, and all other pixels are set to completely transparent. -->
+                            <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                                0 1 0 0 0
+                                0 0 1 0 0
+                                0 0 0 255 -140" />
+                        </filter>
+                    </defs>
+                </svg>
+
+                <div class="mt-5">
+                    <dl class="row contact-list">
+                        <dt class="col-12 col-md-4 text-uppercase">Idade :</dt>
+                        <dd class="col-12 col-md-8 text-light">
+                            {{new Date().getMonth() >= 5 ? ((new Date().getFullYear()) - 2001) : ((new Date().getFullYear()) - 2002)}}
+                        </dd>
+                        <dt class="col-12 col-md-4 text-uppercase">Telefone :</dt>
+                        <dd class="col-12 col-md-8 text-light">(61) 996044897</dd>
+                        <dt class="col-12 col-md-4 text-uppercase">E-mail :</dt>
+                        <dd class="col-12 col-md-8"><a class="text-light text-decoration-none" href="mailto: renzossnmail@gmail.com">renzossnmail@gmail.com</a>
+                        </dd>
+                        <dt class="col-12 col-md-4 text-uppercase">Endereço :</dt>
+                        <dd class="col-12 col-md-8 text-light">Riacho Fundo II Brasília DF</dd>
+                    </dl>
+                    <div class="d-flex personal-profile_social">
+                        <a data-bs-toggle="tooltip" title="Gitgub" href="http://"><i class="fab fa-github text-light fs-4"></i></a>
+                        <a class="px-4" data-bs-toggle="tooltip" title="Linkedin" href="http://"><i class="fab fa-linkedin text-light fs-4"></i></a>
+                        <a data-bs-toggle="tooltip" title="Facebook" href="http://"><i class="fab fa-facebook-square text-light fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
