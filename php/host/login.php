@@ -10,7 +10,6 @@ function lembrarDeMim($option, $nameUser, $password)
         $stringHash = $nameUser . $password . date('d/m/Y H:i:s');
         define("HASH", password_hash($stringHash, PASSWORD_DEFAULT));
         $_SESSION["SESSION_TOKEN"] = json_encode([$nameUser, HASH]); // Salva o token da seção
-        var_dump($_COOKIE);
         $query = "UPDATE `user` SET `sessiontoken`='" . HASH . "',`dataatualizacaosessiontoken`='" . date('d/m/Y H:i:s') . "' WHERE `name` = '" . $nameUser . "'"; // Usuário
         mysqli_query($conexao, $query);
     }

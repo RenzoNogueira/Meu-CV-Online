@@ -117,7 +117,6 @@ if ($_SESSION["user"] != false) {
 							url: "../../php/host/login.php",
 							data: DATA,
 							success: function(request) {
-								console.log(request)
 								if (request == "user") {
 									SELF.menssageErrorUser.numberMensage = 1
 									TOOGLE_FORM("user")
@@ -126,11 +125,11 @@ if ($_SESSION["user"] != false) {
 									TOOGLE_FORM(true)
 									TOOGLE_FORM("password")
 								} else if (request == true) { // Credenciais Conferem
-									// $("input").prop("disabled", true) // Disabilita o formulário
-									// $("section").css("opacity", "0.4") // Aplica opacidade no layout
-									// setTimeout(function() {
-									// 	window.location = "../"
-									// }, 600)
+									$("input").prop("disabled", true) // Disabilita o formulário
+									$("section").css("opacity", "0.4") // Aplica opacidade no layout
+									setTimeout(function() {
+										window.location = "../"
+									}, 600)
 								}
 							},
 						})

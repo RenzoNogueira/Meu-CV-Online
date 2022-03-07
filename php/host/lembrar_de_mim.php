@@ -12,7 +12,7 @@ if(isset($_SESSION["SESSION_TOKEN"])){
     if ($sessiontoken = $result[0]["sessiontoken"] && $user = $result[0]["name"]) {
         if ($sessiontoken == HASH) { // Verifica se as senhas conferem
             $_SESSION["user"] = $user;
-            header("Loaction: ../");
+            header("Location: ../");
         }
     }
 }
