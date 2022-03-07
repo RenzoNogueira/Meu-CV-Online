@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Nov-2021 às 16:46
--- Versão do servidor: 10.4.21-MariaDB
--- versão do PHP: 7.3.31
+-- Tempo de geração: 07-Mar-2022 às 00:41
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `rzssn`
+-- Banco de dados: `u914795534_rzssn`
 --
 
 -- --------------------------------------------------------
@@ -72,6 +72,27 @@ CREATE TABLE `portifolio` (
 INSERT INTO `portifolio` (`itemId`, `title`, `description`, `srcImg`, `data-cadastro`, `linkProject`) VALUES
 (1, 'Teste', 'teste', 'assets/img-portifolio/captura-bira-churrasqueiras.PNG', '2021-11-02 16:09:23', 'https://birachurrasqueiras.com.br');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `password` varchar(600) NOT NULL,
+  `sessiontoken` varchar(300) NOT NULL,
+  `dataatualizacaosessiontoken` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `password`, `sessiontoken`, `dataatualizacaosessiontoken`) VALUES
+(1, 'renzo_nogueira', '$2y$10$snWJDs5b1tQRBeGbDIs9L.SpyuiyiO7ALDWjxz8TvAg4/5JpAtzr.', '$2y$10$WJVSD//FlAW/07BxxfDesuVs4JzZpKKHGxdhrcTSO.Xkd8w5Q3.O6', '06/03/2022 20:3');
+
 --
 -- Índices para tabelas despejadas
 --
@@ -89,6 +110,12 @@ ALTER TABLE `portifolio`
   ADD PRIMARY KEY (`itemId`);
 
 --
+-- Índices para tabela `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -103,6 +130,12 @@ ALTER TABLE `blog`
 --
 ALTER TABLE `portifolio`
   MODIFY `itemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

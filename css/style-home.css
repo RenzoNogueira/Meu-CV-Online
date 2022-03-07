@@ -79,9 +79,10 @@ nav .button-mobile-menu {
     padding-top: 5rem;
 }
 
-.personal-profile-name {
-    font-family: var(--staatliches), cursive;
-}
+
+/* .personal-profile-name {
+    font-family: var(--staatliches), cursive!important;
+} */
 
 .menu nav a:hover:after {
     opacity: 1;

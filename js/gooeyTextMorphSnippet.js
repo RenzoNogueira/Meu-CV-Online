@@ -1,14 +1,16 @@
-window.onload = () => {
+$(function() {
     const elts = {
-        text1: document.getElementById("text1"),
-        text2: document.getElementById("text2")
+        text1: document.querySelector("#text1"),
+        text2: document.querySelector("#text2")
     };
 
     const texts = [
         "Eu",
         "Sou",
         "Desenvolvedor Web",
-        "Design"
+        "Design",
+        "Programador",
+        "Tech"
     ];
 
     const morphTime = 1;
@@ -81,4 +83,4 @@ window.onload = () => {
     }
 
     animate();
-}
+})

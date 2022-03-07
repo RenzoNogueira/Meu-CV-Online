@@ -1,5 +1,6 @@
 <?php
-
+if (!isset($_SESSION))  session_start();
+$_SESSION["user"] = false;
 define('HOST', '127.0.0.1'); // Constante
 define('USUARIO', 'root'); // Mudar
 define('SENHA', ''); // Mudar
