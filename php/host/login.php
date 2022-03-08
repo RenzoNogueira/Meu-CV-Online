@@ -1,11 +1,11 @@
 <?php
 require "conexao.php";
-
+if (!isset($_SESSION))  session_start();
 // Verifica se usuário marcou se quer ser lembrado
 function lembrarDeMim($option, $nameUser, $password)
 {
     global $conexao;
-    if ($option == true) {
+    if ($option) {
         date_default_timezone_set('America/Sao_Paulo');
         $stringHash = $nameUser . $password . date('d/m/Y H:i:s');
         define("HASH", password_hash($stringHash, PASSWORD_DEFAULT));
@@ -18,7 +18,7 @@ function lembrarDeMim($option, $nameUser, $password)
 // Verifica o login do usuário
 define('USER', base64_decode($_POST["user"]));
 define('PASSWORD', $_POST["password"]);
-define('LEMBRAR_DE_MIM', $_POST["lembrarDeMim"]);
+define('LEMBRAR_DE_MIM', boolval($_POST["lembrarDeMim"]));
 // QUERY
 $query = "SELECT `name` FROM `user` WHERE `name` = '" . USER . "'"; // Usuário
 

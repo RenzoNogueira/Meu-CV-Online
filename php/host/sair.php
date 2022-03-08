@@ -2,7 +2,7 @@
 require "../constantes.php";
 require "conexao.php";
 
-if (!isset($_SESSION))  session_start();
+if (!isset($_SESSION)) session_start();
 if (isset($_SESSION["SESSION_TOKEN"])) {
     $user = $_SESSION["user"];
     define("NAME", json_decode($_SESSION["SESSION_TOKEN"])[0]);

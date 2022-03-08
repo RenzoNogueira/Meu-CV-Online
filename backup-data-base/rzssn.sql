@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Mar-2022 às 00:41
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 7.4.27
+-- Tempo de geração: 08-Mar-2022 às 22:21
+-- Versão do servidor: 10.4.21-MariaDB
+-- versão do PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,6 +53,23 @@ INSERT INTO `blog` (`itemId`, `title`, `description`, `content`, `srcImg`, `data
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `info`
+--
+
+CREATE TABLE `info` (
+  `visualizacoes` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `info`
+--
+
+INSERT INTO `info` (`visualizacoes`) VALUES
+(36);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `portifolio`
 --
 
@@ -91,7 +108,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `password`, `sessiontoken`, `dataatualizacaosessiontoken`) VALUES
-(1, 'renzo_nogueira', '$2y$10$snWJDs5b1tQRBeGbDIs9L.SpyuiyiO7ALDWjxz8TvAg4/5JpAtzr.', '$2y$10$WJVSD//FlAW/07BxxfDesuVs4JzZpKKHGxdhrcTSO.Xkd8w5Q3.O6', '06/03/2022 20:3');
+(1, 'renzo_nogueira', '$2y$10$snWJDs5b1tQRBeGbDIs9L.SpyuiyiO7ALDWjxz8TvAg4/5JpAtzr.', '$2y$10$Sph3swi5PdpXdY5oN9T1JOTs0hmhQJtzhjPmFn/ikAFTvroXoP0Y.', '08/03/2022 09:1');
 
 --
 -- Índices para tabelas despejadas

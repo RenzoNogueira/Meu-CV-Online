@@ -16,30 +16,30 @@ var app = new Vue({
             selectedPost: null
         },
         education: [{
-            modelo: "Conclusão do Ensino médio.",
-            periodo: "2017 - 2018",
-            local: "CED 01 do Riacho Fundo II, Brasília / DF",
-            descricao: "Conclusão do ensino médio."
-        },
-        {
-            modelo: "Técnico em informática.",
-            periodo: "2017 - Cursando",
-            local: "Escola Técnica de Brasília, Brasília / DF",
-            descricao: "4° Semestre terminado, procurando estágio em técnico em informática, ou qualquer área que envolva informática."
-        }
+                modelo: "Conclusão do Ensino médio.",
+                periodo: "2017 - 2018",
+                local: "CED 01 do Riacho Fundo II, Brasília / DF",
+                descricao: "Conclusão do ensino médio."
+            },
+            {
+                modelo: "Técnico em informática.",
+                periodo: "2017 - Cursando",
+                local: "Escola Técnica de Brasília, Brasília / DF",
+                descricao: "4° Semestre terminado, procurando estágio em técnico em informática, ou qualquer área que envolva informática."
+            }
         ],
         trabalho: [{
-            modelo: "Octopag tecnologias e intermediações de negócios.",
-            periodo: "2019 - 2020",
-            local: "Brasília / DF",
-            descricao: "Atuou como desenvolvedor WEB. Contribuiu no desenvolvimento de um aplicativo de pagamento digital denominado “Octo pag” (disponível na play store e app store), e seus respectivos dashboards para administração. Usando as seguintes tecnologias de desenvolvimento: Html, CSS, Javascript, PHP, Banco de dados Mariadb, Framework Cordova, Framework 7, Framework Vue JS, Node JS, NPM, Git, Laragon, Github."
-        },
-        {
-            modelo: "Trídia criação.",
-            periodo: "2020 - 2020",
-            local: "Brasília / DF",
-            descricao: "Atuou como desenvolvedor de sites web em linguagem PHP com o framework Joomla."
-        }
+                modelo: "Octopag tecnologias e intermediações de negócios.",
+                periodo: "2019 - 2020",
+                local: "Brasília / DF",
+                descricao: "Atuou como desenvolvedor WEB. Contribuiu no desenvolvimento de um aplicativo de pagamento digital denominado “Octo pag” (disponível na play store e app store), e seus respectivos dashboards para administração. Usando as seguintes tecnologias de desenvolvimento: Html, CSS, Javascript, PHP, Banco de dados Mariadb, Framework Cordova, Framework 7, Framework Vue JS, Node JS, NPM, Git, Laragon, Github."
+            },
+            {
+                modelo: "Trídia criação.",
+                periodo: "2020 - 2020",
+                local: "Brasília / DF",
+                descricao: "Atuou como desenvolvedor de sites web em linguagem PHP com o framework Joomla."
+            }
         ],
         dadosFormOrcamento: {
             tipoIdentificacao: 0,
@@ -51,12 +51,12 @@ var app = new Vue({
         }
     },
     methods: {
-        buscarCep: async function (input) {
+        buscarCep: async function(input) {
             const SELF = this
             const CEP = input.target.value
             if (CEP.length == 9) {
-                $.get(`https://viacep.com.br/ws/${CEP}/json/`, function (dataCep) {
-                    $.get(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${dataCep.ibge}`, function (dataMun) {
+                $.get(`https://viacep.com.br/ws/${CEP}/json/`, function(dataCep) {
+                    $.get(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${dataCep.ibge}`, function(dataMun) {
                         console.log(dataCep)
                         console.log(dataMun)
                         SELF.dadosFormOrcamento.estado = dataMun["regiao-imediata"]["regiao-intermediaria"].nome
@@ -68,7 +68,7 @@ var app = new Vue({
 
             }
         },
-        bloquearScroll: function () {
+        bloquearScroll: function() {
             var scrollPosition = [
                 self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
                 self.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -79,14 +79,14 @@ var app = new Vue({
             html.css('overflow', 'hidden');
             window.scrollTo(scrollPosition[0], scrollPosition[1]);
         },
-        desbloquearScroll: function () {
+        desbloquearScroll: function() {
             var html = jQuery('html');
             var scrollPosition = html.data('scroll-position');
             html.css('overflow', html.data('previous-overflow'));
             window.scrollTo(scrollPosition[0], scrollPosition[1])
         },
         // Nav Menu
-        togleMobileMenu: function () {
+        togleMobileMenu: function() {
             navigator.vibrate(100);
             const menu = document.querySelector('.mobile-menu')
             const links = document.querySelector('.mobile-menu-links')
@@ -96,25 +96,25 @@ var app = new Vue({
                 links.classList.toggle('d-none')
                 $('.mobile-menu').animate({
                     left: 0
-                }, 250, function () { })
+                }, 250, function() {})
                 $('.mobile-menu-links').animate({
                     left: 0
-                }, 350, function () { })
+                }, 350, function() {})
             } else {
                 $('.mobile-menu').animate({
                     left: '-100vh'
-                }, 250, function () { })
+                }, 250, function() {})
                 $('.mobile-menu-links').animate({
                     left: '-100vh'
-                }, 250, function () { })
-                setTimeout(function () {
+                }, 250, function() {})
+                setTimeout(function() {
                     menu.classList.toggle('d-none')
                     links.classList.toggle('d-none')
                 }, 250)
             }
         },
 
-        onScroll: function () {
+        onScroll: function() {
             const menu = document.querySelector('.nav-menu')
             if (window.scrollY > 50) {
                 $('nav').css({
@@ -150,7 +150,7 @@ var app = new Vue({
         // Nav Menu
 
         // Portifolio
-        loadPortifolio: function (clear) {
+        loadPortifolio: function(clear) {
             if (clear == true) {
                 app.portifolio.data = []
                 app.moreDataPort.portifolio = true
@@ -158,11 +158,11 @@ var app = new Vue({
             }
             if (this.moreDataPort.portifolio) {
                 $.post("php/load-portifolio.php", {
-                    data: {
-                        positionAfterItem: this.portifolio.positionAfterItem
-                    }
-                })
-                    .done(function (data) {
+                        data: {
+                            positionAfterItem: this.portifolio.positionAfterItem
+                        }
+                    })
+                    .done(function(data) {
                         data = JSON.parse(data)
                         if (data.length > 0) {
                             for (let i = 0; i < data.length; i++) {
@@ -177,32 +177,32 @@ var app = new Vue({
         },
         // Portifolio
         // Blog
-        scrollbarPostsBlogBack: function () {
+        scrollbarPostsBlogBack: function() {
             const el = $('#blog-publications')
             const elValue = el.scrollLeft()
             el.animate({
                 scrollLeft: (elValue - 400)
             })
         },
-        scrollbarPostsBlogMore: function () {
+        scrollbarPostsBlogMore: function() {
             const el = $('#blog-publications')
             const elValue = el.scrollLeft()
             el.animate({
                 scrollLeft: (elValue + 400)
             })
         },
-        closeViewPostBlog: function (el) {
+        closeViewPostBlog: function(el) {
             $('.viewPostBlog').toggleClass('d-none')
             $('.containerViewPostBlog').toggleClass('d-none')
         },
-        openViewPostBlog: function (el) {
+        openViewPostBlog: function(el) {
             this.blog.selectedPost = el
-            setTimeout(function () {
+            setTimeout(function() {
                 $('.containerViewPostBlog').removeClass('d-none')
                 $('.viewPostBlog').removeClass('d-none')
             }, 100)
         },
-        loadBlog: function (clear) {
+        loadBlog: function(clear) {
             if (clear == true) {
                 app.blog.data = []
                 app.moreDataPort.blog = true
@@ -210,11 +210,11 @@ var app = new Vue({
             }
             if (this.moreDataPort.portifolio) {
                 $.post("php/load-content-blog.php", {
-                    data: {
-                        positionAfterItem: this.blog.positionAfterItem
-                    }
-                })
-                    .done(function (data) {
+                        data: {
+                            positionAfterItem: this.blog.positionAfterItem
+                        }
+                    })
+                    .done(function(data) {
                         data = JSON.parse(data)
                         if (data.length > 0) {
                             for (let i = 0; i < data.length; i++) {
@@ -229,7 +229,7 @@ var app = new Vue({
         },
         // Blog
         // Orçamento
-        closeViewOrcamento: function () {
+        closeViewOrcamento: function() {
             $('.containerOrcamento').toggleClass('d-none')
             $('.viewOrcamento').toggleClass('d-none')
             try {
@@ -238,10 +238,10 @@ var app = new Vue({
                 // ...
             }
         },
-        openViewOrcamento: function (el) {
+        openViewOrcamento: function(el) {
             const SELF = this
             SELF.blog.selectedPost = el
-            setTimeout(function () {
+            setTimeout(function() {
                 $('.containerOrcamento').removeClass('d-none')
                 $('.viewOrcamento').removeClass('d-none')
                 SELF.bloquearScroll()
@@ -249,34 +249,44 @@ var app = new Vue({
             $('.tooltip').not(this).remove() // Oculta tooltips
         },
         // Orçamento
+        newView: function() {
+            $.ajax({
+                type: "POST",
+                url: "php/views.php",
+                success: function(request) {
+                    console.log(request)
+                },
+            })
+        }
     },
     watch: {
-        'dadosFormOrcamento.tipoIdentificacao': function () { // atualiza as mascaras dos campos CPF/CNPJ
+        'dadosFormOrcamento.tipoIdentificacao': function() { // atualiza as mascaras dos campos CPF/CNPJ
             setTimeout(() => {
                 $("input[name='cpf']").mask('000.000.000-00');
                 $("input[name='cnpj']").mask('00.000.000/0000-00');
             }, 200)
         }
     },
-    mounted: function () {
+    mounted: function() {
         window.addEventListener('scroll', () => {
             this.onScroll()
         })
-        window.onload = function () {
+        // window.onload = function() {
             $('#preloader').addClass('d-none')
             var scrollSpy = new bootstrap.ScrollSpy(document.body, {
                 target: '#menu-desktop'
             })
-            $(document).ready(function () { // Pausa carousel
+            $(document).ready(function() { // Pausa carousel
                 $('#carouselorcamento').carousel('pause');
             });
-        }
+        // }
+        this.newView()
     },
-    beforeMount: function () {
+    beforeMount: function() {
         this.loadPortifolio()
         this.loadBlog()
     },
-    beforeDestroy: function () {
+    beforeDestroy: function() {
         window.removeEventListener('scroll', this.onScroll)
     },
 })

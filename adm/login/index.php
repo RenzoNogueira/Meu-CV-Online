@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php
-require "../../php/constantes.php";
-require "../../php/host/lembrar_de_mim.php";
+if (!isset($_SESSION))  session_start();
 if ($_SESSION["user"] != false) {
 	// Redireciona usuário de páginas não válidas
 	header("Location: ../#Usuário_já_logado!");
 	die();
 }
+require "../../php/constantes.php";
+require "../../php/host/lembrar_de_mim.php";
 ?>
 
 <head>
@@ -109,7 +110,7 @@ if ($_SESSION["user"] != false) {
 						const DATA = {
 							user: btoa(SELF.login.user),
 							password: btoa(SELF.login.password),
-							lembrarDeMim: SELF.lembrarDeMim
+							lembrarDeMim: SELF.lembrarDeMim? 1 : 0
 						} // Trata os dados
 						// Ajax
 						$.ajax({
@@ -117,6 +118,7 @@ if ($_SESSION["user"] != false) {
 							url: "../../php/host/login.php",
 							data: DATA,
 							success: function(request) {
+								// console.log(request)
 								if (request == "user") {
 									SELF.menssageErrorUser.numberMensage = 1
 									TOOGLE_FORM("user")
