@@ -3,6 +3,7 @@
 <?php
 require "php/constantes.php";
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,32 @@ require "php/constantes.php";
     <link rel="stylesheet" href="css/gooeyTextMorphSnippet.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-home.css">
-    <title><?php echo HOME;?></title>
+    <title><?php echo HOME; ?></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-224012097-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-224012097-1');
+    </script><!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-224012097-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-224012097-1');
+    </script>
 </head>
 
 <body class="customScrollbar-y">
