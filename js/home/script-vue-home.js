@@ -29,7 +29,6 @@ var app = new Vue({
             }
         ],
         trabalho: [{
-<<<<<<< HEAD
             modelo: "Octopag tecnologias e intermediações de negócios.",
             periodo: "2019 - 2020",
             local: "Brasília / DF",
@@ -47,19 +46,6 @@ var app = new Vue({
             local: "Brasília / DF",
             descricao: "Atuando como desenvolvedor de sites web: Atualização e desenvolvimento de dashboards de administração; Instalação e desenvolvimento de plataformas EAD em Moodle; Administração de banco de dados SQL e Maria DB; Administração de arquivos e domínios Hostinger."
         }
-=======
-                modelo: "Octopag tecnologias e intermediações de negócios.",
-                periodo: "2019 - 2020",
-                local: "Brasília / DF",
-                descricao: "Atuou como desenvolvedor WEB. Contribuiu no desenvolvimento de um aplicativo de pagamento digital denominado “Octo pag” (disponível na play store e app store), e seus respectivos dashboards para administração. Usando as seguintes tecnologias de desenvolvimento: Html, CSS, Javascript, PHP, Banco de dados Mariadb, Framework Cordova, Framework 7, Framework Vue JS, Node JS, NPM, Git, Laragon, Github."
-            },
-            {
-                modelo: "Trídia criação.",
-                periodo: "2020 - 2020",
-                local: "Brasília / DF",
-                descricao: "Atuou como desenvolvedor de sites web em linguagem PHP com o framework Joomla."
-            }
->>>>>>> 232f54e03bbdf28d53984ae0fc9cc9c4d30f54ed
         ],
         dadosFormOrcamento: {
             tipoIdentificacao: 0,
@@ -274,7 +260,7 @@ var app = new Vue({
                 type: "POST",
                 url: "php/views.php",
                 success: function(request) {
-                    console.log(request)
+                    // console.log(request)
                 },
             })
         }

@@ -13,9 +13,6 @@ require "php/constantes.php";
     <link rel="stylesheet" href="css/gooeyTextMorphSnippet.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-home.css">
-<<<<<<< HEAD
-    <title><?php echo HOME; ?></title>
-=======
     <title><?php echo HOME;?></title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-224012097-1">
@@ -42,7 +39,6 @@ require "php/constantes.php";
 
         gtag('config', 'UA-224012097-1');
     </script>
->>>>>>> 232f54e03bbdf28d53984ae0fc9cc9c4d30f54ed
 </head>
 
 <body class="customScrollbar-y">
