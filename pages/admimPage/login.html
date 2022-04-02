@@ -1,0 +1,44 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">Acesso ao painel de administração</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                    <form class="signin-form">
+                        <div class="form-group position-relative">
+                            <input id="name" disabled="disabled" v-model="login.user" type="text" class="form-control" placeholder="Nome do Administrador" required>
+                            <div class="invalid-tooltip">
+                                {{menssageErrorUser.menssage[menssageErrorUser.numberMensage]}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input disabled="disabled" v-model="login.password" id="password-field" type="password" class="form-control" placeholder="Senha do Administrador" required>
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            <div class="invalid-tooltip">
+                                {{menssageErrorPassword.menssage[menssageErrorPassword.numberMensage]}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button @click="submit" type="submit" class="form-control btn btn-primary submit px-3">Entrar</button>
+                        </div>
+                        <div class="form-group d-md-flex">
+                            <div class="w-50">
+                                <label class="checkbox-wrap checkbox-primary">Lembre de mim
+                                    <input v-model="lembrarDeMim" type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="w-50 text-md-right">
+                                <a href="#" style="color: #fff">Esqueci a senha</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
