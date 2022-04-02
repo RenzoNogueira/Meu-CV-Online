@@ -53,8 +53,8 @@ template: `
         </span>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
             <li><a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-blog">Blog</a></li>
-            <li> <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-orcamento">Orçamento</a></li>
             <li><a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-orcamento">Contato</a></li>
+            <li> <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-orcamento">*Orçamento</a></li>
             <?php echo $LINK_ADM; ?>
     </div>
 </div>
