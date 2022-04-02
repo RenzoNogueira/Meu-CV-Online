@@ -39,6 +39,12 @@ var app = new Vue({
             periodo: "2020 - 2020",
             local: "Brasília / DF",
             descricao: "Atuou como desenvolvedor de sites web em linguagem PHP com o framework Joomla."
+        },
+        {
+            modelo: "Grupo Evolue.",
+            periodo: "2021 - Atual",
+            local: "Brasília / DF",
+            descricao: "Atuando como desenvolvedor de sites web: Atualização e desenvolvimento de dashboards de administração; Instalação e desenvolvimento de plataformas EAD em Moodle; Administração de banco de dados SQL e Maria DB; Administração de arquivos e domínios Hostinger."
         }
         ],
         dadosFormOrcamento: {

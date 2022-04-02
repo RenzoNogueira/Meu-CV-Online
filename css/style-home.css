@@ -97,7 +97,7 @@ nav .button-mobile-menu {
     -o-object-fit: cover;
     object-fit: cover;
     margin-top: 10px;
-    position: relative;
+    filter: saturate(0.5);
 }
 
 .contact-list dt,
@@ -187,6 +187,17 @@ nav .button-mobile-menu {
 .button-mobile-menu,
 .button-close-mobile-menu {
     cursor: pointer;
+}
+
+.cv-download {
+    color: #fff;
+    background-color: var(--purple);
+    border-color: var(--purple);
+}
+
+.cv-download:hover {
+    color: #fff;
+    filter: brightness(1.4);
 }
 
 .hab-icon {
