@@ -1,4 +1,4 @@
-<div class="d-none">
+<div class="">
     <div class="sub-section-title mb-5">
         <span class="undeline fw-lighter fs-7">Pedir um orçamento</span>
     </div>
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="viewOrcamento d-none position-fixed top-50 start-50 translate-middle p-4 shadow rounded customScrollbar-y">
+    <div class="viewOrcamento position-fixed top-50 start-50 translate-middle p-4 shadow rounded customScrollbar-y">
         <!-- <div class="viewOrcamento position-fixed top-50 start-50 translate-middle p-4 shadow rounded customScrollbar-y"> -->
         <div class="button-close-post-blog d-flex align-items-center justify-content-end p-3">
             <button v-on:click="closeViewOrcamento" type="button" class="fs-4 btn-close float-end" aria-label="Close"></button>
@@ -124,12 +124,66 @@
                     </h2>
                     <div id="dadosEmpresa-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="dadosEmpresa-headingTwo">
                         <div class="accordion-body">
-
+                            <!-- Formulário para a empresa -->
                             <form class="row">
                                 <div class="col-6 mt-2">
                                     <div class="form-floating">
-                                        <input type="text" name="nome_empresa" class="form-control" id="nomeEmpresa" placeholder="Nome da Empresa">
-                                        <label for="nomeEmpresa">Nome da Empresa*</label>
+                                        <input v-model="dadosFormOrcamento.nomeEmpresa" type="text" class="form-control" id="nomeEmpresaOrcamento" placeholder="Nome da Empresa">
+                                        <label for="nomeEmpresaOrcamento">Nome da Empresa*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.nomeRepresentante" type="text" class="form-control" id="nomeRepresentanteOrcamento" placeholder="Nome do Representante">
+                                        <label for="nomeRepresentanteOrcamento">Nome do Representante*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.emailEmpresa" type="email" class="form-control" id="emailEmpresaOrcamento" placeholder="E-mail da Empresa">
+                                        <label for="emailEmpresaOrcamento">E-mail da Empresa*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.telefoneEmpresa" type="tel" class="form-control" id="telefoneEmpresaOrcamento" placeholder="Telefone da Empresa">
+                                        <label for="telefoneEmpresaOrcamento">Telefone da Empresa*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.cnpj" type="text" class="form-control" id="cnpjOrcamento" placeholder="CNPJ da Empresa">
+                                        <label for="cnpjOrcamento">CNPJ da Empresa*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.cepEmpresa" type="text" class="form-control" id="cepEmpresaOrcamento" placeholder="Cep da Empresa">
+                                        <label for="cepEmpresaOrcamento">Cep da Empresa*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.bairroEmpresa" type="text" class="form-control" id="bairroEmpresaOrcamento" placeholder="Bairro da Empresa">
+                                        <label for="bairroEmpresaOrcamento">Bairro da Empresa*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.logradouroEmpresa" type="text" class="form-control" id="logradouroEmpresaOrcamento" placeholder="Logradouro da Empresa">
+                                        <label for="logradouroEmpresaOrcamento">Logradouro da Empresa*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.estadoEmpresa" type="text" class="form-control" id="estadoEmpresaOrcamento" placeholder="Estado da Empresa">
+                                        <label for="estadoEmpresaOrcamento">Estado da Empresa*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <div class="form-floating">
+                                        <input v-model="dadosFormOrcamento.cidadeEmpresa" type="text" class="form-control" id="cidadeEmpresaOrcamento" placeholder="Cidade da Empresa">
+                                        <label for="cidadeEmpresaOrcamento">Cidade da Empresa*</label>
                                     </div>
                                 </div>
                             </form>
@@ -137,6 +191,138 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Check list de funcionaliaddes para escolher para colocar no site -->
+            <div class="accordion mt-2" id="accordionInformacoesPessoais">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="informacoesPessoais-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#funcionalidades-collapseOne" aria-expanded="true" aria-controls="funcionalidades-collapseOne">
+                            Funcionalidades
+                        </button>
+                    </h2>
+                    <div id="funcionalidades-collapseOne" class="accordion-collapse collapse" aria-labelledby="funcionalidades-headingOne">
+                        <div class="accordion-body">
+                            <div class="row">
+
+                                <!-- Tabela de preços das funcionalidades -->
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Funcionalidades</th>
+                                                    <th scope="col">Preço</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input role="button" class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                                                            <label class="form-check-label" for="defaultCheck7">
+                                                            Check me out
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                    <td>R$ 100,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input role="button" class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                                                            <label class="form-check-label" for="defaultCheck7">
+                                                            Check me out
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                    <td>R$ 100,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input role="button" class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                                                            <label class="form-check-label" for="defaultCheck7">
+                                                            Check me out
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                    <td>R$ 100,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input role="button" class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                                                            <label class="form-check-label" for="defaultCheck7">
+                                                            Check me out
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                    <td>R$ 100,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input role="button" class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                                                            <label class="form-check-label" for="defaultCheck7">
+                                                            Check me out
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                    <td>R$ 100,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <b>Total</b>
+                                                    </td>
+                                                    <td>
+                                                        <b>
+                                                            R$ 100,00
+                                                        </b>
+                                                    </td>
+                                                </tr>
+                                                <!-- Preço com desconto aplicado -->
+                                                <tr>
+                                                    <td>
+                                                        <b>Total com desconto</b>
+                                                    </td>
+                                                    <td>
+                                                        <span class="text-success">
+                                                            R$ 100,00
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- Desconto disponível -->
+                                        <div class="alert alert-success" role="alert">
+                                            <b>Desconto disponível:</b> 5%
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- parágrafo de Descrição -->
+            <!-- não deve ser um formuário -->
+            <div class="mt-4">
+                <h4 class="text-center">
+                    Sobre o orçamento</h4>
+                    <p class="text-center">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisi vel tincidunt
+                        tincidunt, nisi nisl tincidunt nisi, eget consectetur nisi nisi eget nisi.
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+                        egestas.</p>
+            </div>
+
+
+
+           <!-- Botão solicitar orçamento desabilitado -->
+            <div class="row mt-2">
+                <div class="col-12">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" disabled>Solicitar Orçamento</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>

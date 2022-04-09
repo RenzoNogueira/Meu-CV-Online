@@ -255,15 +255,35 @@ var app = new Vue({
             $('.tooltip').not(this).remove() // Oculta tooltips
         },
         // Orçamento
-        newView: function() {
+        // TODO: Funação para pegar dados do ip do usuário
+        newView: function() { // Função para contar o número de views do blog
             $.ajax({
                 type: "POST",
+                // pega o ip do usuário
+                data: {
+                    ip: this.getIp()
+                },
                 url: "php/views.php",
                 success: function(request) {
                     // console.log(request)
                 },
             })
+        },
+        // TODO: Verificar credenciais para o cabeçalho
+        getIp: function() {
+            var ip = null;
+            $.ajax({
+                url: "https://api.ipify.org?format=json",
+                type: "GET",
+                async: false,
+                success: function(data) {
+                    ip = data.ip;
+                    console.log(data)
+                }
+            });
+            return ip;
         }
+
     },
     watch: {
         'dadosFormOrcamento.tipoIdentificacao': function() { // atualiza as mascaras dos campos CPF/CNPJ
