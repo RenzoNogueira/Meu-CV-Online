@@ -17,7 +17,7 @@ require "../php/host/verifica_login.php";
     <title><?php echo HOME; ?></title>
 </head>
 
-<body class="customScrollbar-y">
+<body class="overflow-hidden">
     <div id="app">
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid d-flex flex-row-reverse ">
@@ -28,23 +28,26 @@ require "../php/host/verifica_login.php";
             </div>
         </nav>
         <main>
-            <div class="d-flex flex-row p-2">
-                <div class="menu-lateral bg-secondary btn-group btn-group-vertical" role="group">
-                    <button type="button" class="btn  btn-outline-light"><span class="text-dark">1</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">2</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">3</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">4</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">5</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">6</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">7</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">8</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">9</span></button>
-                    <button type="button" class="btn mb-2 btn-outline-light"><span class="text-dark">10</span></button>
-                </div>
-                <div class="content"></div>
+            <div class="p-2 mt-4 menu-lt">
+                    <div class="menu-lateral btn-group btn-group-vertical">
+                        <div>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-house-user"></i></span><span class="text-light btn-text-lt">Home</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                            <button type="button" class="btn btn-menu-lt position-relative mb-2"><span class="text-light fs-5"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="text-light btn-text-lt">Opção</span></button>
+                        </div>
+                    </div>
             </div>
         </main>
     </div>
+
+    <script src="https://kit.fontawesome.com/274af9ab8f.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
