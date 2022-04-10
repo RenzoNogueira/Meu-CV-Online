@@ -1,9 +1,20 @@
 <?php
+/* 
+    Lux Andrew
+    Recebe o ip e salva no bancp de dados.
+*/
+
+
 require "host/conexao.php";
-mysqli_query($conexao, 'SET NAMES utf8');
-$query = "SELECT `visualizacoes` FROM `info`"; // Número de visualizações
-$newViews = (mysqli_query($conexao, $query)->fetch_all(MYSQLI_ASSOC)[0]["visualizacoes"]) + 1; // Implementa mais 1 nas visualizações
-// var_dump(mysqli_query($conexao, $query)->fetch_all(MYSQLI_ASSOC)[0]["visualizacoes"]);
-$query = "UPDATE `info` SET `visualizacoes`='" . $newViews . "'";
-mysqli_query($conexao, $query); // Implementa as visualizações
-echo $newViews;
+// Importa classe localizacao da pasta objects
+require "objects/Localizacao.php";
+
+// Se existir o post de ip chanará iniciará a variavel geilocalizaçao com o retorno da classe
+if (isset($_POST['ip'])) {
+    // global Localizacao;
+    $ip = $_POST['ip'];
+    // Instancia classe localizacao pasando o ip
+    $view = new Localizacao($ip);
+    // Salva
+    $view->save();
+}

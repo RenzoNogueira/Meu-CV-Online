@@ -265,7 +265,7 @@ var app = new Vue({
                 },
                 url: "php/views.php",
                 success: function(request) {
-                    // console.log(request)
+                    console.log(request)
                 },
             })
         },
@@ -278,7 +278,6 @@ var app = new Vue({
                 async: false,
                 success: function(data) {
                     ip = data.ip;
-                    console.log(data)
                 }
             });
             return ip;
