@@ -4,10 +4,9 @@
     Recebe o ip e salva no bancp de dados.
 */
 
-
-require "host/conexao.php";
+require "../host/conexao.php";
 // Importa classe localizacao da pasta objects
-require "objects/Localizacao.php";
+require "../objects/Localizacao.php";
 
 // Se existir o post de ip chanará iniciará a variavel geilocalizaçao com o retorno da classe
 if (isset($_POST['ip'])) {
@@ -15,6 +14,8 @@ if (isset($_POST['ip'])) {
     $ip = $_POST['ip'];
     // Instancia classe localizacao pasando o ip
     $view = new Localizacao($ip);
+    // Pega a localização do IP
+    $view->getLocalizacao($ip);
     // Salva
     $view->save();
 }

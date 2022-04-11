@@ -29,23 +29,23 @@ var app = new Vue({
             }
         ],
         trabalho: [{
-            modelo: "Octopag tecnologias e intermediações de negócios.",
-            periodo: "2019 - 2020",
-            local: "Brasília / DF",
-            descricao: "Atuou como desenvolvedor WEB. Contribuiu no desenvolvimento de um aplicativo de pagamento digital denominado “Octo pag” (disponível na play store e app store), e seus respectivos dashboards para administração. Usando as seguintes tecnologias de desenvolvimento: Html, CSS, Javascript, PHP, Banco de dados Mariadb, Framework Cordova, Framework 7, Framework Vue JS, Node JS, NPM, Git, Laragon, Github."
-        },
-        {
-            modelo: "Trídia criação.",
-            periodo: "2020 - 2020",
-            local: "Brasília / DF",
-            descricao: "Atuou como desenvolvedor de sites web em linguagem PHP com o framework Joomla."
-        },
-        {
-            modelo: "Grupo Evolue.",
-            periodo: "2021 - Atual",
-            local: "Brasília / DF",
-            descricao: "Atuando como desenvolvedor de sites web: Atualização e desenvolvimento de dashboards de administração; Instalação e desenvolvimento de plataformas EAD em Moodle; Administração de banco de dados SQL e Maria DB; Administração de arquivos e domínios Hostinger."
-        }
+                modelo: "Octopag tecnologias e intermediações de negócios.",
+                periodo: "2019 - 2020",
+                local: "Brasília / DF",
+                descricao: "Atuou como desenvolvedor WEB. Contribuiu no desenvolvimento de um aplicativo de pagamento digital denominado “Octo pag” (disponível na play store e app store), e seus respectivos dashboards para administração. Usando as seguintes tecnologias de desenvolvimento: Html, CSS, Javascript, PHP, Banco de dados Mariadb, Framework Cordova, Framework 7, Framework Vue JS, Node JS, NPM, Git, Laragon, Github."
+            },
+            {
+                modelo: "Trídia criação.",
+                periodo: "2020 - 2020",
+                local: "Brasília / DF",
+                descricao: "Atuou como desenvolvedor de sites web em linguagem PHP com o framework Joomla."
+            },
+            {
+                modelo: "Grupo Evolue.",
+                periodo: "2021 - Atual",
+                local: "Brasília / DF",
+                descricao: "Atuando como desenvolvedor de sites web: Atualização e desenvolvimento de dashboards de administração; Instalação e desenvolvimento de plataformas EAD em Moodle; Administração de banco de dados SQL e Maria DB; Administração de arquivos e domínios Hostinger."
+            }
         ],
         dadosFormOrcamento: {
             tipoIdentificacao: 0,
@@ -263,7 +263,7 @@ var app = new Vue({
                 data: {
                     ip: this.getIp()
                 },
-                url: "php/views.php",
+                url: "php/views/new_view.php",
                 success: function(request) {
                     console.log(request)
                 },
@@ -294,16 +294,16 @@ var app = new Vue({
     },
     mounted: function() {
         window.addEventListener('scroll', () => {
-            this.onScroll()
-        })
-        // window.onload = function() {
-            $('#preloader').addClass('d-none')
-            var scrollSpy = new bootstrap.ScrollSpy(document.body, {
-                target: '#menu-desktop'
+                this.onScroll()
             })
-            $(document).ready(function() { // Pausa carousel
-                $('#carouselorcamento').carousel('pause');
-            });
+            // window.onload = function() {
+        $('#preloader').addClass('d-none')
+        var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+            target: '#menu-desktop'
+        })
+        $(document).ready(function() { // Pausa carousel
+            $('#carouselorcamento').carousel('pause');
+        });
         // }
         this.newView()
     },

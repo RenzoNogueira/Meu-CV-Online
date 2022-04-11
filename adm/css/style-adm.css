@@ -9,6 +9,37 @@
     --dark: #212529;
 }
 
+.dashboard-body-escurecido {
+    filter: blur(3px) brightness(0.8);
+}
+
+/* Anima os cards */
+.animated.bounceInDown {
+    animation-name: bounceInDown;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animated.bounceInDown {
+    animation-name: bounceInDown;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+/* Anima os cards */
+
+/* Anima o menu lateral*/
+.animated.bounceInLeft {
+    animation-name: fadeInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+/* Anima o menu lateral */
+
+/* Navbar */
+.navbar {
+    backdrop-filter: brightness(0.8)!important;
+}
+
 #app {
     background-color: var(--middle-grey);
 }
@@ -71,3 +102,44 @@
     background-color: var(--middle-grey) !important;
     border-radius: 50px !important;
 } */
+
+/* Animações */
+@keyframes bounceInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateX(30px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

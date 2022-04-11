@@ -88,13 +88,42 @@ class Localizacao
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Função para contar quantod registros existem no banco de dados
-    public function count($ip = null)
+    // Função para contar quantos registros existem no banco de dados
+    public function count($ip = null, $period = null)
     {
         global $conexao;
         // Com oparâmetro
-        if (isset($ip)) {
+        if (isset($ip) && !isset($period)) {
             $query = "SELECT COUNT(*) FROM `views` WHERE `ip`='" . $ip . "'";
+        } else if (!isset($period) && isset($ip)) {
+            // Sem oparâmetro
+            $query = "SELECT COUNT(*) FROM `views`";
+        }
+        // Caso periodo for igual a today contar todos dados na data de hoje. e assim por diante
+        if (isset($period) && $period == "today") {
+            $query = "SELECT COUNT(*) FROM `views` WHERE `data_entry`='" . date("Y-m-d") . "'";
+        } else if (isset($period) && $period == "yesterday") {
+            $query = "SELECT COUNT(*) FROM `views` WHERE `data_entry`='" . date("Y-m-d", strtotime("-1 day")) . "'";
+        } else if (isset($period) && $period == "lastWeek") {
+            $query = "SELECT COUNT(*) FROM `views` WHERE `data_entry`>='" . date("Y-m-d", strtotime("-7 day")) . "'";
+        } else if (isset($period) && $period == "lastMonth") {
+            $query = "SELECT COUNT(*) FROM `views` WHERE `data_entry`>='" . date("Y-m-d", strtotime("-30 day")) . "'";
+        } else if (isset($period) && $period == "lastYear") {
+            $query = "SELECT COUNT(*) FROM `views` WHERE `data_entry`>='" . date("Y-m-d", strtotime("-365 day")) . "'";
+        }
+        // Executa a query
+        $result = $conexao->query($query);
+        // Retorna o resultado
+        return $result->fetch_all(MYSQLI_ASSOC)[0]["COUNT(*)"];
+    }
+
+    // Conta quantas visualizações teve por região
+    public function countRegion($region = null)
+    {
+        global $conexao;
+        // Com oparâmetro
+        if (isset($region)) {
+            $query = "SELECT COUNT(*) FROM `views` WHERE `region`='" . $region . "'";
         } else {
             // Sem oparâmetro
             $query = "SELECT COUNT(*) FROM `views`";
@@ -103,5 +132,64 @@ class Localizacao
         $result = $conexao->query($query);
         // Retorna o resultado
         return $result->fetch_all(MYSQLI_ASSOC)[0]["COUNT(*)"];
+    }
+
+    // Conta quantas visualizações teve por cidade
+    public function countCity($city = null)
+    {
+        global $conexao;
+        // Com oparâmetro
+        if (isset($city)) {
+            $query = "SELECT COUNT(*) FROM `views` WHERE `city`='" . $city . "'";
+        } else {
+            // Sem oparâmetro
+            $query = "SELECT COUNT(*) FROM `views`";
+        }
+        // Executa a query
+        $result = $conexao->query($query);
+        // Retorna o resultado
+        return $result->fetch_all(MYSQLI_ASSOC)[0]["COUNT(*)"];
+    }
+
+    // Conta quantas visualizações teve por país
+    public function countCountry($country = null)
+    {
+        global $conexao;
+        // Com oparâmetro
+        if (isset($country)) {
+            $query = "SELECT COUNT(*) FROM `views` WHERE `country`='" . $country . "'";
+        } else {
+            // Sem oparâmetro
+            $query = "SELECT COUNT(*) FROM `views`";
+        }
+        // Executa a query
+        $result = $conexao->query($query);
+        // Retorna o resultado
+        return $result->fetch_all(MYSQLI_ASSOC)[0]["COUNT(*)"];
+    }
+
+    // envia post para localizar a localização da view usando a sua latitude e longitude
+    public function getLocation($lat, $lng)
+    {
+        // Inicializa a url
+        $url = "http://api.geonames.org/findNearbyPlaceNameJSON?lat=" . $lat . "&lng=" . $lng . "&username=joseph_silva";
+        // Inicializa o cURL
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($result, true);
+
+        // Inicializa todas as varáveis com o resultado
+        $this->city = $result["address"]["city"];
+        $this->country = $result["address"]["countryName"];
+        $this->geonameId = $result["address"]["geonameId"];
+        $this->lat = $result["address"]["lat"];
+        $this->lng = $result["address"]["lng"];
+        $this->postalCode = $result["address"]["postalCode"];
+        $this->region = $result["address"]["region"];
+        // Retorna o objeto com todas as varáveis
+        return $this;
     }
 }
