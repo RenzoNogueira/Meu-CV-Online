@@ -103,6 +103,48 @@
     border-radius: 50px !important;
 } */
 
+/* chat-bubble */
+.chat-bubble {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    width: auto;
+    max-height: fit-content;
+    max-width: fit-content!important;
+    height: auto;
+    border: #2125296a solid 1px;
+    border-radius: 0.5em;
+}
+
+
+/* chat-bubble-header */
+.chat-bubble-header {
+    background-color: var(--purple);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.5em 0.5em 0 0;
+}
+
+/* Demais estilos */
+.chat-bubble-body {
+    background-color: var(--bs-secondary);
+    color: #212529!important;
+    color: #fff;
+    padding: 0.5em;
+}
+.chat-bubble-footer {
+    background-color: var(--purple-plum);
+    color: #fff;
+    display: flex;
+    padding: 0.5em;
+    border-radius: 0 0 0.5em 0.5em;
+}
+     
+
 /* Animações */
 @keyframes bounceInDown {
     0% {

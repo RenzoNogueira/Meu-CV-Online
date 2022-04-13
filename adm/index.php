@@ -10,6 +10,8 @@ require "../php/host/verifica_login.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery themes -->
+    <link rel="stylesheet" href="../frameworks/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="../frameworks/Bootstrap-5.0/Lux-Bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../css/fonts/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -29,7 +31,7 @@ require "../php/host/verifica_login.php";
                     <!-- Importa a menu-lateral -->
                     <?php require "../pages/admimPage/menu-lateral.html"; ?>
                 </div>
-                <div class="dashbody col-11 pt-5">
+                <div class="dashbody px-5 col-11 pt-5">
                     <!-- Montar grid de cards -->
                     <div class="row">
                         <div class="col-md-4">
@@ -81,14 +83,22 @@ require "../php/host/verifica_login.php";
                     </div>
                 </div>
             </div>
+
+            <!-- Cria uma bolha flutuante de chatbot -->
+            <?php require "../pages/admimPage/chatbot.html"; ?>
         </main>
     </div>
 
     <script src="../frameworks/jQuery-3.6/jquery-3.6.0.min.js"></script>
+    <script src="../frameworks/jquery-ui/jquery-ui.min.js"></script>
     <script src="../frameworks/jQueryMask/dist/jquery.mask.min.js"></script>
+    <!-- jquery ui -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.12/draggable.bundle.js"></script>
     <script src="../frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/274af9ab8f.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- importar jquery-draggable cdn  -->
+
     <script>
         // vue js
         var app = new Vue({
@@ -173,7 +183,10 @@ require "../php/host/verifica_login.php";
                     $("#search-bar").blur(function() {
                         $(".dashbody").removeClass("dashboard-body-escurecido");
                     });
-                    
+                    // Poder arrastar o chatbot com o mouse
+                    $(".chat-bubble").draggable({
+                        handle: ".chat-bubble-header"
+                    });
                 }
             },
             beforeMount: function() {
