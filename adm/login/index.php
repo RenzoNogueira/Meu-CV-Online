@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php
-if (!isset($_SESSION))  session_start();
-if ($_SESSION["user"] != false) {
-	// Redireciona usuário de páginas não válidas
-	header("Location: ../#Usuário_já_logado!");
-	die();
-}
 require "../../php/constantes.php";
 require "../../php/host/lembrar_de_mim.php";
+if ($_SESSION["user"] != false) {
+	// Redireciona usuário de páginas não válidas
+	header("Location: ../#".$_SESSION["user"]);
+	die();
+}
 ?>
 
 <head>
@@ -35,6 +34,7 @@ require "../../php/host/lembrar_de_mim.php";
 	<script src="../../frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 	<script src="../../js/components/vue-componenst.js"></script>
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
 	<!-- <script src="../../frameworks/reveal-effect-button/main.js"></script> -->
 	<script src="js/script.js"></script>

@@ -110,6 +110,8 @@ class Localizacao
             $query = "SELECT COUNT(*) FROM `views` WHERE `data_entry`>='" . date("Y-m-d", strtotime("-30 day")) . "'";
         } else if (isset($period) && $period == "lastYear") {
             $query = "SELECT COUNT(*) FROM `views` WHERE `data_entry`>='" . date("Y-m-d", strtotime("-365 day")) . "'";
+        } else if (isset($period) && $period == "all") {
+            $query = "SELECT COUNT(*) FROM `views`";
         }
         // Executa a query
         $result = $conexao->query($query);

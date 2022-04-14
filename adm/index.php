@@ -80,6 +80,16 @@ require "../php/host/verifica_login.php";
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total de visitas</h5>
+                                    <div>
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,6 +107,7 @@ require "../php/host/verifica_login.php";
     <script src="../frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/274af9ab8f.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <!-- importar jquery-draggable cdn  -->
 
     <script>
@@ -143,21 +154,44 @@ require "../php/host/verifica_login.php";
                     // Envia o periodo para o servidor
                     $.post("../php/views/get-total-views.php", {
                         periodo: {
-                            today: "today",
-                            yesterday: "yesterday",
-                            lastWeek: "lastWeek",
-                            lastMonth: "lastMonth",
+                            // today: "today",
+                            // yesterday: "yesterday",
+                            // lastWeek: "lastWeek",
+                            // lastMonth: "lastMonth",
                             lastYear: "lastYear"
                         }
                     }).done(function(data) {
                         data = JSON.parse(data);
                         // Atualiza todos os intervalos
-                        SELF.totalVisitas.today = data.today;
-                        SELF.totalVisitas.yesterday = data.yesterday;
-                        SELF.totalVisitas.lastWeek = data.lastWeek;
-                        SELF.totalVisitas.lastMonth = data.lastMonth;
-                        SELF.totalVisitas.lastYear = data.lastYear;
-                        SELF.viewsPeriodoEscolhido = SELF.totalVisitas.today
+                        SELF.totalVisitas = []
+                        // procura o mes atual dentro do array
+                        Object.keys(data).forEach(function(key) {
+                            if (key == new Date().getMonth()) {
+                                SELF.totalVisitas = data[key]
+                                // console.log(SELF.totalVisitas)
+                                return true
+                            }
+                            // SELF.totalVisitas[key] = data[key]
+                        })
+                        console.log(data)
+                        SELF.totalVisitas.push(data["January"].length)
+                        SELF.totalVisitas.push(data["February"].length)
+                        SELF.totalVisitas.push(data["March"].length)
+                        SELF.totalVisitas.push(data["April"].length)
+                        SELF.totalVisitas.push(data["May"].length)
+                        SELF.totalVisitas.push(data["June"].length)
+                        SELF.totalVisitas.push(data["July"].length)
+                        SELF.totalVisitas.push(data["August"].length)
+                        SELF.totalVisitas.push(data["September"].length)
+                        SELF.totalVisitas.push(data["October"].length)
+                        SELF.totalVisitas.push(data["November"].length)
+                        SELF.totalVisitas.push(data["December"].length)
+
+                        // Atualiza o gráfico
+                        // SELF.viewsPeriodoEscolhido = SELF.totalVisitas[SELF.totalVisitas.length - 1]
+                        // POPULA O ARRAY DE VISUALIZAÇÕES
+                        SELF.initializeChartViews(SELF.totalVisitas)
+
                     });
                 },
                 animate: function() {
@@ -169,7 +203,7 @@ require "../php/host/verifica_login.php";
                     $(".card-title").addClass("animated bounceInDown");
                     // Anima o menu lateral
                     $(".menu-lateral").addClass("animated bounceInLeft");
-                   
+
                     $(".menu-lateral").hover(function() {
                         $(".dashbody").addClass("dashboard-body-escurecido");
                     }, function() {
@@ -187,7 +221,60 @@ require "../php/host/verifica_login.php";
                     $(".chat-bubble").draggable({
                         handle: ".chat-bubble-header"
                     });
+                },
+                initializeChartViews: function(data) {
+                    SELF = this
+                    const LABELS = []
+                    legthMont = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate()
+                    // Popula o array de labels
+                    for (let index = 1; index <= legthMont; index++) {
+                        LABELS.push(index)
+                    }
+                    console.log(LABELS)
+                    // Cria o gráfico de views
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            // Todos os meses
+                            labels:LABELS,
+                            datasets: [{
+                                label: 'Visualizações',
+                                data: data,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgb(138, 129, 124)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            animations: {
+                                tension: {
+                                    duration: 2000,
+                                    easeInOutBounce: 'linear',
+                                    from: 1,
+                                    to: 0,
+                                    loop: true
+                                }
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
                 }
+
             },
             beforeMount: function() {
                 // Pega total de visitas
@@ -195,11 +282,12 @@ require "../php/host/verifica_login.php";
             },
             mounted: function() {
                 SELF = this;
-                // // Pega total de visitas
+                // Pega total de visitas
                 // SELF.getTotalVisitas();
                 // console.log("teste")
                 // Ao efetuar hover no menu-lateral, o dashbody irá escurecer
                 SELF.animate();
+                // this.initializeChartViews();
             }
         })
     </script>

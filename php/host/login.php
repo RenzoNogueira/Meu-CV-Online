@@ -29,7 +29,7 @@ define("PASSWORD", $_POST["password"]);
 define("LEMBRAR_DE_MIM", boolval($_POST["lembrarDeMim"]));
 
 // Verifica se o usuário existe no banco de dados
-$sql = "SELECT `password` FROM user WHERE `name` = '" . USER . "'";
+$sql = "SELECT * FROM user WHERE `name` = '" . USER . "'";
 $result = mysqli_query($conexao, $sql);
 if (mysqli_num_rows($result) > 0) {
     // Se o usuário existe, verifica se a senha está correta usando password_verify
@@ -42,7 +42,7 @@ if (mysqli_num_rows($result) > 0) {
         if (password_verify(PASSWORD, $row["password"])) {
             if (LEMBRAR_DE_MIM) {
                 // Se o usuário quer lembrar de mim, lembra de mim
-                lembrarDeMim(USER, PASSWORD);
+                lembrarDeMim(USER, $row["password"]);
             }
             // Salva o nome do usuário na sessão
             $_SESSION["user"] = USER;
