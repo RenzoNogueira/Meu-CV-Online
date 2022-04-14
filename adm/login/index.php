@@ -118,7 +118,7 @@ require "../../php/host/lembrar_de_mim.php";
 							url: "../../php/host/login.php",
 							data: DATA,
 							success: function(request) {
-								// console.log(request)
+								console.log(request)
 								if (request == "user") {
 									SELF.menssageErrorUser.numberMensage = 1
 									TOOGLE_FORM("user")

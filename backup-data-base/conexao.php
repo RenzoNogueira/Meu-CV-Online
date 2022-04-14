@@ -11,3 +11,6 @@ define('DB', 'u914795534_rzssn');
 
 $conexao = mysqli_connect(HOST, USUARIO, SENHA, DB) or die('Erro ao conectar, tente novamente mais tarde ou recarregue a página.');
 $conexao->set_charset('utf8');
+
+// Define o mysqlquery para utf8
+mysqli_query($conexao, "SET NAMES 'utf8'");

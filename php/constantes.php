@@ -2,14 +2,15 @@
 
 // Nome do servidor
 define("ROOT", $_SERVER['SERVER_NAME']);
-// pegar apasta atual dentro local host
-define("PASTA", $_SERVER['REQUEST_URI']);
+// Pega a pasta raiz da url
+// Apenas a primeira pasta
+define("ROOT_FOLDER", "/".explode("/", $_SERVER['REQUEST_URI'])[1]);
 
 // Caminho de redirecionamento erro 404
-define("ROOT_404", "http://" . ROOT.PASTA. "pages/404.php");
+define("ROOT_404", "http://" . ROOT.ROOT_FOLDER. "/pages/404.php");
 
 // Caminho de redirecionamento erro 404
-define("LOGIN_ADM", "http://" . ROOT.PASTA. "login/");
+define("LOGIN_ADM", "http://" . ROOT.ROOT_FOLDER. "/adm/login/");
 
 // Títulos das páginas
 define("HOME", "Renzo Nogueira");
