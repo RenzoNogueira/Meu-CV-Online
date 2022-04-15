@@ -34,35 +34,32 @@ require "../php/host/verifica_login.php";
                 <div class="dashbody px-5 col-11 pt-5">
                     <!-- Montar grid de cards -->
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card">
+                        <div class="col-sm-12 col-12 col-lg-6 col-xl-4 col-xxl-4 mt-4">
+                            <div style="z-index: 999!important;" class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Total de visitas</h5>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h6 class="card-subtitle mt-2 text-muted">{{periodoEscolhido}}</h6>
-                                            <p class="card-text">{{viewsPeriodoEscolhido}} <span class="text-muted fs-5 fw-bold text-bold">views</span></p>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <!-- icone de carregamento -->
+                                            <h5 class="card-title">Total de visitas <span v-if="loadingChart" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></h5>
                                         </div>
                                         <!-- Dropdown para ocultar os demais períodos -->
-                                        <div class="col-md-6">
-                                            <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Período
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a @click="periodoEscolhido = 'today'" class="dropdown-item" href="#">Hoje</a>
-                                                    <a @click="periodoEscolhido = 'yesterday'" class="dropdown-item" href="#">Ontem</a>
-                                                    <a @click="periodoEscolhido = 'week'" class="dropdown-item" href="#">Semana</a>
-                                                    <a @click="periodoEscolhido = 'month'" class="dropdown-item" href="#">Mês</a>
-                                                    <a @click="periodoEscolhido = 'year'" class="dropdown-item" href="#">Ano</a>
-                                                </div>
+                                        <div style="transform: translateY(-15px)!important;" class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle bg-transparent" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a @click="periodoEscolhido = 'week'" class="dropdown-item" href="#">Essa Semana</a>
+                                                <a @click="periodoEscolhido = 'month'" class="dropdown-item" href="#">Este mês</a>
+                                                <a @click="periodoEscolhido = 'months'" class="dropdown-item" href="#">Este ano</a>
+                                                <a @click="periodoEscolhido = 'years'" class="dropdown-item" href="#">Ultimos dez anos</a>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div>
+                                        <canvas id="myChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mt-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Cadastrar novo produto</h5>
@@ -71,22 +68,12 @@ require "../php/host/verifica_login.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mt-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Cadastrar novo pedido</h5>
                                     <p class="card-text">Cadastre um novo pedido para acessar o sistema.</p>
                                     <a href="cadastrar-pedido.php" class="btn btn-primary">Cadastrar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total de visitas</h5>
-                                    <div>
-                                        <canvas id="myChart"></canvas>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -115,83 +102,55 @@ require "../php/host/verifica_login.php";
         var app = new Vue({
             el: '#app',
             data: {
+                loadingChart: false,
                 totalVisitas: {
-                    today: 0,
-                    yesterday: 0,
-                    lastWeek: 0,
-                    lastMonth: 0,
-                    lastYear: 0
+                    allViews: [],
+                    week: 0,
+                    month: 0,
+                    months: 0,
+                    years: 0
                 },
-                periodoEscolhido: "today", // Predefinido como hoje
+                chartViewsIntance: null, // instancia do grafico de views
+                periodoEscolhido: "week", // Predefinido como esta semana.
                 viewsPeriodoEscolhido: 0
             },
             watch: {
                 periodoEscolhido: function() {
                     SELF = this
                     switch (SELF.periodoEscolhido) {
-                        case "today":
-                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.today
-                            break;
-                        case "yesterday":
-                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.yesterday
-                            break;
                         case "week":
-                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.lastWeek
+                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.week
                             break;
                         case "month":
-                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.lastMonth
+                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.month
                             break;
-                        case "year":
-                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.lastYear
+                        case "months":
+                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.months
+                            break;
+                        case "years":
+                            SELF.viewsPeriodoEscolhido = SELF.totalVisitas.years
                             break;
                     }
+                    SELF.initializeChartViews()
                 }
             },
             methods: {
                 // Pegar total de visualizações do dia com post
                 getTotalVisitas: function() {
                     SELF = this
+                    SELF.loadingChart = true
                     // Envia o periodo para o servidor
-                    $.post("../php/views/get-total-views.php", {
-                        periodo: {
-                            // today: "today",
-                            // yesterday: "yesterday",
-                            // lastWeek: "lastWeek",
-                            // lastMonth: "lastMonth",
-                            lastYear: "lastYear"
-                        }
-                    }).done(function(data) {
+                    $.post("../php/views/get-total-views.php", {}).done(function(data) {
                         data = JSON.parse(data);
-                        // Atualiza todos os intervalos
-                        SELF.totalVisitas = []
-                        // procura o mes atual dentro do array
-                        Object.keys(data).forEach(function(key) {
-                            if (key == new Date().getMonth()) {
-                                SELF.totalVisitas = data[key]
-                                // console.log(SELF.totalVisitas)
-                                return true
-                            }
-                            // SELF.totalVisitas[key] = data[key]
-                        })
-                        console.log(data)
-                        SELF.totalVisitas.push(data["January"].length)
-                        SELF.totalVisitas.push(data["February"].length)
-                        SELF.totalVisitas.push(data["March"].length)
-                        SELF.totalVisitas.push(data["April"].length)
-                        SELF.totalVisitas.push(data["May"].length)
-                        SELF.totalVisitas.push(data["June"].length)
-                        SELF.totalVisitas.push(data["July"].length)
-                        SELF.totalVisitas.push(data["August"].length)
-                        SELF.totalVisitas.push(data["September"].length)
-                        SELF.totalVisitas.push(data["October"].length)
-                        SELF.totalVisitas.push(data["November"].length)
-                        SELF.totalVisitas.push(data["December"].length)
-
+                        // console.log(data)
+                        SELF.totalVisitas.allViews = data
+                        SELF.totalVisitas.week = Object.values(data.semana).reduce((a, b) => a + b, 0)
+                        SELF.totalVisitas.month = Object.values(data.mes).reduce((a, b) => a + b, 0)
+                        SELF.totalVisitas.months = Object.values(data.meses).reduce((a, b) => a + b, 0)
+                        SELF.totalVisitas.years = Object.values(data.anos).reduce((a, b) => a + b, 0)
                         // Atualiza o gráfico
-                        // SELF.viewsPeriodoEscolhido = SELF.totalVisitas[SELF.totalVisitas.length - 1]
-                        // POPULA O ARRAY DE VISUALIZAÇÕES
-                        SELF.initializeChartViews(SELF.totalVisitas)
-
+                        // Inicializa o gráficp a cada 20 segundos
+                        SELF.initializeChartViews()
                     });
                 },
                 animate: function() {
@@ -222,25 +181,43 @@ require "../php/host/verifica_login.php";
                         handle: ".chat-bubble-header"
                     });
                 },
-                initializeChartViews: function(data) {
+                initializeChartViews: function() {
                     SELF = this
-                    const LABELS = []
-                    legthMont = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate()
-                    // Popula o array de labels
-                    for (let index = 1; index <= legthMont; index++) {
-                        LABELS.push(index)
+                    if (SELF.chartViewsIntance) {
+                        SELF.chartViewsIntance.destroy()
                     }
-                    console.log(LABELS)
+                    const LABELS = []
+                    let periodo = null
+                    let countViews = []
+                    switch (SELF.periodoEscolhido) {
+                        case "week":
+                            periodo = SELF.totalVisitas.allViews.semana
+                            break;
+                        case "month":
+                            periodo = SELF.totalVisitas.allViews.mes
+                            break;
+                        case "months":
+                            periodo = SELF.totalVisitas.allViews.meses
+                            break;
+                        case "years":
+                            periodo = SELF.totalVisitas.allViews.anos
+                            break;
+                    }
+                    // Inicializa os label com os valores da variável
+                    Object.keys(periodo).forEach(function(key) {
+                        LABELS.push(key)
+                        countViews.push(periodo[key])
+                    });
                     // Cria o gráfico de views
                     var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {
+                    SELF.chartViewsIntance = new Chart(ctx, {
                         type: 'line',
                         data: {
                             // Todos os meses
-                            labels:LABELS,
+                            labels: LABELS,
                             datasets: [{
                                 label: 'Visualizações',
-                                data: data,
+                                data: countViews,
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)',
                                     'rgba(54, 162, 235, 0.2)',
@@ -264,30 +241,30 @@ require "../php/host/verifica_login.php";
                                     loop: true
                                 }
                             },
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: SELF.periodoEscolhido
+                                }
                             }
                         }
                     });
+                    SELF.loadingChart = false
                 }
 
             },
             beforeMount: function() {
+                SELF = this
                 // Pega total de visitas
                 this.getTotalVisitas();
+                setInterval(function() {
+                    SELF.getTotalVisitas();
+                }, 20000)
             },
             mounted: function() {
-                SELF = this;
-                // Pega total de visitas
-                // SELF.getTotalVisitas();
-                // console.log("teste")
+                SELF = this
                 // Ao efetuar hover no menu-lateral, o dashbody irá escurecer
                 SELF.animate();
-                // this.initializeChartViews();
             }
         })
     </script>
