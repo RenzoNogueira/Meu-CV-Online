@@ -7,10 +7,10 @@ define("ROOT", $_SERVER['SERVER_NAME']);
 define("ROOT_FOLDER", "/".explode("/", $_SERVER['REQUEST_URI'])[1]);
 
 // Caminho de redirecionamento erro 404
-define("ROOT_404", "http://" . ROOT.ROOT_FOLDER. "/pages/404.php");
+define("ROOT_404", ROOT.ROOT_FOLDER. "/pages/404.php");
 
 // Caminho de redirecionamento erro 404
-define("LOGIN_ADM", "http://" . ROOT.ROOT_FOLDER. "/adm/login/");
+define("LOGIN_ADM", ROOT.ROOT_FOLDER. "/adm/login/");
 
 // Títulos das páginas
 define("HOME", "Renzo Nogueira");
