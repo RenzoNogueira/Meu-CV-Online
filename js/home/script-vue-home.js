@@ -255,7 +255,6 @@ var app = new Vue({
             $('.tooltip').not(this).remove() // Oculta tooltips
         },
         // Orçamento
-        // TODO: Funação para pegar dados do ip do usuário
         newView: function() { // Função para contar o número de views do blog
             $.ajax({
                 type: "POST",
@@ -269,7 +268,6 @@ var app = new Vue({
                 },
             })
         },
-        // TODO: Verificar credenciais para o cabeçalho
         getIp: function() {
             var ip = null;
             $.ajax({
