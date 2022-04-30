@@ -21,7 +21,7 @@ if ($_SESSION["user"] != false) {
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="img js-fullheight" style="background-image: url(images/mountain-bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(images/mountain-bg.webp);">
 	<div id="appLogin">
 		<?php
 		require "../../pages/admimPage/login.html"; // Importação de página 
