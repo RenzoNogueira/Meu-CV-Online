@@ -9,7 +9,6 @@ if ($_SESSION["user"] != false) {
 	die();
 }
 ?>
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +19,6 @@ if ($_SESSION["user"] != false) {
 	<link rel="stylesheet" href="../../frameworks/reveal-effect-button/main.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body class="img js-fullheight" style="background-image: url(images/mountain-bg.webp);">
 	<div id="appLogin">
 		<?php
@@ -34,9 +32,7 @@ if ($_SESSION["user"] != false) {
 	<script src="../../frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 	<script src="../../js/components/vue-componenst.js"></script>
-	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
-	<!-- <script src="../../frameworks/reveal-effect-button/main.js"></script> -->
 	<script src="js/script.js"></script>
 	<script>
 		// Vue Js
@@ -65,7 +61,6 @@ if ($_SESSION["user"] != false) {
 						$(window).resize(function() {
 							$('.js-fullheight').css('height', $(window).height());
 						});
-
 					};
 					fullHeight();
 					$(".toggle-password").click(function() {
@@ -153,8 +148,6 @@ if ($_SESSION["user"] != false) {
 				setTimeout(function() {
 					$("input").prop("disabled", false)
 				}, 900);
-
-
 			},
 		})
 	</script>
