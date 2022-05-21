@@ -4,7 +4,7 @@
 define("ROOT", $_SERVER['SERVER_NAME']);
 // Pega a pasta raiz da url
 // Apenas a primeira pasta
-define("ROOT_FOLDER", "/".explode("/", $_SERVER['REQUEST_URI'])[1]);
+define("ROOT_FOLDER", "/" . explode("/", $_SERVER['REQUEST_URI'])[1]);
 
 // Caminho de redirecionamento erro 404
 define("ROOT_404", "/pages/404.php");
@@ -16,3 +16,11 @@ define("LOGIN_ADM", "/adm/login/");
 define("HOME", "Renzo Nogueira");
 define("LOGIN_DASHBOARD", "Página de login");
 define("ADMIN", "Dashboard admin");
+
+// Descroção das páginas
+define("HOME_DESC", 
+"Renzo da SilvaSoares Nogueira. Desenvolvedor web | Desenvolvedor Júnior;
+Telefone para orçamento: (61) 996044897; E-mail : renzossnmail@gmail.com;
+Endereço : Riacho Fundo II Brasília DF.");
+define("META_KEYWORDS", "Renzo Nogueira, Renzo, Nogueira, Renzo Nogueira Desenvolvedor, Desenvolvedor, Desenvolvedor web, Desenvolvedor web Renzo Nogueira,
+Desenvolvedor web Renzo, Desenvolvedor web Nogueira, HTML, CSS, PHP, Blog, Riacho Fundo II, Brasília, DF, Brasília DF");

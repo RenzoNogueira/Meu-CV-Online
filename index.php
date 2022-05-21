@@ -13,7 +13,12 @@ require "php/constantes.php";
     <link rel="stylesheet" href="css/gooeyTextMorphSnippet.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-home.css">
+    
     <title><?php echo HOME;?></title>
+    <meta name="description" content="<?php echo HOME_DESC;?>">
+    <meta name="keywords" content="<?php echo META_KEYWORDS;?>">
+    <meta name="robots" content="index, follow">
+    <link rel = "canonical" href="https://rz.dev.br" />
 </head>
 
 <body class="customScrollbar-y">

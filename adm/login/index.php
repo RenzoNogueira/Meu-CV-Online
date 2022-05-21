@@ -2,8 +2,9 @@
 <html lang="pt-br">
 <?php
 require "../../php/constantes.php";
-require "../../php/host/lembrar_de_mim.php";
-if ($_SESSION["user"] != false) {
+// require "../../php/host/lembrar_de_mim.php";
+if (!isset($_SESSION)) session_start();
+if (!empty($_SESSION["user"])) {
 	// Redireciona usuário de páginas não válidas
 	header("Location: ../#".$_SESSION["user"]);
 	die();
@@ -121,11 +122,11 @@ if ($_SESSION["user"] != false) {
 									SELF.menssageErrorPassword.numberMensage = 1
 									TOOGLE_FORM(true)
 									TOOGLE_FORM("password")
-								} else if (request == true) { // Credenciais Conferem
+								} else { // Credenciais Conferem
 									$("input").prop("disabled", true) // Disabilita o formulário
 									$("section").css("opacity", "0.4") // Aplica opacidade no layout
 									setTimeout(function() {
-										window.location = "../"
+										window.location = `../#${request}`
 									}, 600)
 								}
 							},

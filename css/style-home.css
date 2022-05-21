@@ -10,6 +10,28 @@
     margin-bottom: 40px;
 }
 
+#menu-mobile {
+    background-color: rgba(3, 28, 50, 0.79);
+}
+
+/* Logo .logo-personal-profile svg */
+.logo-personal-profile {
+    max-width: 380px;
+}
+
+.logo-nav-mobile {
+    max-width: 200px;
+}
+
+.logo-nav-desktop {
+    height: 40px;
+}
+.logo-personal-profile img, .logo-nav-mobile img, .logo-nav-desktop img {
+    width: 100%;
+    height: 100%;
+}
+
+
 @media only screen and (vertical-scrollbar:[outside]) {
     .nav-menu {
         position: fixed;

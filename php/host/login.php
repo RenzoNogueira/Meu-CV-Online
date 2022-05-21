@@ -36,7 +36,8 @@ if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     // Se o usuário não está logado, verifica se o usuário quer lembrar de mim
     if (isset($_SESSION["token"]) && $_SESSION["token"] == $row["sessiontoken"]) {
-        echo true;
+        $_SESSION["user"] = USER;
+        echo USER;
     } else {
         // Se a senha está correta, verifica se o usuário está logado
         if (password_verify(PASSWORD, $row["password"])) {
@@ -46,7 +47,7 @@ if (mysqli_num_rows($result) > 0) {
             }
             // Salva o nome do usuário na sessão
             $_SESSION["user"] = USER;
-            echo true; // Retorna true para o ajax
+            // echo USER; // Retorna usuário para o ajax
         } else {
             // Se a senha está incorreta, redireciona para a página de erro
             echo "password"; // Retorna false para o ajax
@@ -54,5 +55,5 @@ if (mysqli_num_rows($result) > 0) {
     }
 } else {
     // Se o usuário não existir, echo false
-    echo "user"; // Retorna false para o ajax
+    echo false; // Retorna false para o ajax
 }

@@ -129,6 +129,7 @@ var app = new Vue({
                 })
                 $('nav').addClass('scrollOn')
                 $('#links-menu').children().children().removeClass('text-light').addClass('text-dark')
+                $('.logo-nav-desktop').removeClass('d-none') // Remove logo
                 $('nav').children().removeClass('text-light').addClass('text-dark')
                 $('nav').children().removeClass('text-light').addClass('text-dark')
                 $('#links-menu').children().css({
@@ -140,6 +141,7 @@ var app = new Vue({
             } else {
                 $('nav').removeClass('scrollOn')
                 $('#links-menu').children().children().removeClass('text-dark').addClass('text-light')
+                $('.logo-nav-desktop').addClass('d-none') // Adiciona logo
                 $('nav').children().removeClass('text-dark').addClass('text-light')
                 $('nav').css({
                     backgroundColor: 'transparent',
@@ -264,7 +266,7 @@ var app = new Vue({
                 },
                 url: "php/views/new_view.php",
                 success: function(request) {
-                    console.log(request)
+                    // console.log(request)
                 },
             })
         },
