@@ -12,6 +12,7 @@ require "../php/host/verifica_login.php";
     <!-- jquery themes -->
     <link rel="stylesheet" href="../frameworks/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="../frameworks/Bootstrap-5.0/Lux-Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../frameworks/jquery-confirm-v3.3.4/jquery-confirm.min.css">
     <link rel="stylesheet" href="../css/fonts/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="css/style-adm.css">
@@ -85,9 +86,11 @@ require "../php/host/verifica_login.php";
         </main>
     </div>
 
+    <script src="js/confirm-exit.js"></script>
     <script src="../frameworks/jQuery-3.6/jquery-3.6.0.min.js"></script>
     <script src="../frameworks/jquery-ui/jquery-ui.min.js"></script>
     <script src="../frameworks/jQueryMask/dist/jquery.mask.min.js"></script>
+    <script src="../frameworks/jquery-confirm-v3.3.4/jquery-confirm.min.js"></script>
     <!-- jquery ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.12/draggable.bundle.js"></script>
     <script src="../frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>

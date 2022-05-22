@@ -2,11 +2,10 @@
 <html lang="pt-br">
 <?php
 require "../../php/constantes.php";
-// require "../../php/host/lembrar_de_mim.php";
-if (!isset($_SESSION)) session_start();
-if (!empty($_SESSION["user"])) {
+require "../../php/host/lembrar_de_mim.php";
+if (!empty($_COOKIE["user"])) {
 	// Redireciona usuário de páginas não válidas
-	header("Location: ../#".$_SESSION["user"]);
+	header("Location: ../#".$_COOKIE["user"]);
 	die();
 }
 ?>

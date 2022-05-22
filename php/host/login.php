@@ -1,8 +1,6 @@
 <?php
 require "../constantes.php";
 require "conexao.php";
-if (!isset($_SESSION)) session_start();
-
 // Função para lembrar o login
 // A seção será salva com ul token no banco de dados
 // O tekn será salvo no campo sessiontoken do user
@@ -14,9 +12,10 @@ function lembrarDeMim($nameUser, $password)
     $sql = "UPDATE user SET sessiontoken = '$token' WHERE name = '$nameUser' AND password = '$password'";
     $result = mysqli_query($conexao, $sql);
     if ($result) {
-        $_SESSION["token"] = $token;
-        $_SESSION["user"] = $nameUser;
-        $_SESSION["password"] = $password;
+        // Salva por uma semana
+        setcookie("token", $token, time() + (86400 * 7), "/");
+        setcookie("user", $nameUser, time() + (86400 * 7), "/");
+        setcookie("password", $nameUser, time() + (86400 * 7), "/");
         return true;
     } else {
         return false;
@@ -35,8 +34,9 @@ if (mysqli_num_rows($result) > 0) {
     // Se o usuário existe, verifica se a senha está correta usando password_verify
     $row = mysqli_fetch_assoc($result);
     // Se o usuário não está logado, verifica se o usuário quer lembrar de mim
-    if (isset($_SESSION["token"]) && $_SESSION["token"] == $row["sessiontoken"]) {
-        $_SESSION["user"] = USER;
+    if (isset($_COOKIE["token"]) && $_COOKIE["token"] == $row["sessiontoken"]) {
+        // Salva por um dia
+        setcookie("user", USER, time() + (86400), "/");
         echo USER;
     } else {
         // Se a senha está correta, verifica se o usuário está logado
@@ -46,7 +46,8 @@ if (mysqli_num_rows($result) > 0) {
                 lembrarDeMim(USER, $row["password"]);
             }
             // Salva o nome do usuário na sessão
-            $_SESSION["user"] = USER;
+            // Salva por um dia
+            setcookie("user", USER, time() + (86400), "/");
             // echo USER; // Retorna usuário para o ajax
         } else {
             // Se a senha está incorreta, redireciona para a página de erro

@@ -12,6 +12,7 @@ require "../../php/host/verifica_login.php";
     <!-- jquery themes -->
     <link rel="stylesheet" href="../../frameworks/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="../../frameworks/Bootstrap-5.0/Lux-Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../frameworks/jquery-confirm-v3.3.4/jquery-confirm.min.css">
     <link rel="stylesheet" href="../../css/fonts/fonts.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../css/style-adm.css">
@@ -51,8 +52,8 @@ require "../../php/host/verifica_login.php";
                             <div class="card shadow-lg">
                                 <div class="card-body">
                                     <!-- imagem. se não existir: uma div -->
-                                    <div @click="openDetalhes(portifolio)" v-if="portifolio.srcImg" class="position-relative">
-                                        <img :src="'../../' + portifolio.srcImg" class="card-img-top rounded" :alt="portifolio.title    ">
+                                    <div  v-if="portifolio.srcImg" class="position-relative">
+                                        <img @click="openDetalhes(portifolio)" :src="'../../' + portifolio.srcImg" class="card-img-top rounded" :alt="portifolio.title    ">
                                         <div class="position-absolute p-2" style="top: 0; left: 0;">
                                             <h5 class="text-white">{{portifolio.title}}</h5>
                                         </div>
@@ -65,9 +66,9 @@ require "../../php/host/verifica_login.php";
                                             </button>
                                         </div>
                                     </div>
-                                    <div v-else @click="openDetalhes(portifolio)">
+                                    <div v-else>
                                         <div class="card-img-top position-relative rounded" style="height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0.5) 100%);">
-                                            <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                                            <div @click="openDetalhes(portifolio)" class="d-flex justify-content-center align-items-center" style="height: 100%;">
                                                 <i class="fas fa-image fa-2x"></i>
                                             </div>
                                             <div class="position-absolute p-2" style="top: 0; left: 0;">
@@ -129,7 +130,7 @@ require "../../php/host/verifica_login.php";
                     </div>
                 </div>
 
-                <!-- detalhes do portifólio selecionado -->
+                <!-- Detalhes do portifólio selecionado -->
                 <div class="modal fade" id="modal-detalhes-portifolio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -171,15 +172,60 @@ require "../../php/host/verifica_login.php";
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Editar o portifólio -->
+                <div class="modal fade" id="modal-editar-portifolio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Editar portifólio</h5>
+                                <button type="button" class="close btn tbn-link" data-bs-dismiss="modal" aria-label="Close">
+                                    <i class="fas fs-4 fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="titulo">Título</label>
+                                            <input type="text" class="form-control" id="titulo" v-model="portifolioEditar.title">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <div class="form-group">
+                                            <label for="descricao">Descrição</label>
+                                            <textarea class="form-control" id="descricao" v-model="portifolioEditar.description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <div class="form-group">
+                                            <label for="imagem">Imagem</label>
+                                            <input type="file" class="form-control-file" id="imagem" @change="onFileChange">
+                                        </div>
+                                        <img :src="'../../' + portifolioEditar.srcImg" :alt="portifolioEditar.title" class="card-img-top img-fluid mt-4" v-if="portifolioEditar.srcImg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer mt-4">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <button type="button" class="btn btn-primary" @click="editarPortifolio">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                     <!-- Cria uma bolha flutuante de chatbot -->
                     <?php require "../../pages/admimPage/chatbot.html"; ?>
         </main>
     </div>
 
+    
+    <script src="../js/confirm-exit.js"></script>
     <script src="../../frameworks/jQuery-3.6/jquery-3.6.0.min.js"></script>
     <script src="../../frameworks/jquery-ui/jquery-ui.min.js"></script>
     <script src="../../frameworks/jQueryMask/dist/jquery.mask.min.js"></script>
+    <script src="../../frameworks/jquery-confirm-v3.3.4/jquery-confirm.min.js"></script>
     <!-- jquery ui -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.12/draggable.bundle.js"></script>
     <script src="../../frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
@@ -197,6 +243,7 @@ require "../../php/host/verifica_login.php";
             data: {
                 portifolio: [],
                 portifolioSelecionado: [],
+                portifolioEditar: [],
                 portifolios: [{
                         titulo: 'teste',
                         descricao: 'teste',
@@ -249,6 +296,45 @@ require "../../php/host/verifica_login.php";
                 openDetalhes: function(portifolio) {
                     this.portifolioSelecionado = portifolio;
                     $('#modal-detalhes-portifolio').modal('show');
+                },
+                editarPortifolio: function(portifolio) {
+                    this.portifolioEditar = portifolio;
+                    $('#modal-editar-portifolio').modal('show');
+                },
+                excluirPortifolio: function(portifolio) {
+                    $.confirm({
+                        title: 'Excluir Portifolio',
+                        content: 'Deseja realmente excluir o portifolio?',
+                        buttons: {
+                            confirmar: {
+                                text: 'Sim',
+                                btnClass: 'btn-blue',
+                                action: function() {
+                                    $.ajax({
+                                        url: '../../controller/portifolio/excluir.php',
+                                        type: 'POST',
+                                        data: {
+                                            id: portifolio.id
+                                        },
+                                        success: function(data) {
+                                            console.log(data);
+                                            location.reload();
+                                        },
+                                        error: function(data) {
+                                            console.log(data);
+                                        }
+                                    });
+                                }
+                            },
+                            cancelar: {
+                                text: 'Não',
+                                btnClass: 'btn-red',
+                                action: function() {
+                                    $.alert('Cancelado!');
+                                }
+                            }
+                        }
+                    });
                 },
                 loadPortifolios: function() {
                     SELF = this

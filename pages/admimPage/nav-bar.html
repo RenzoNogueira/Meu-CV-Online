@@ -1,6 +1,34 @@
-<div class="container-fluid d-flex flex-row-reverse ">
-    <form class="d-flex">
+<div class="d-flex flex-row justify-content-end w-100">
+    <!-- <form class="d-flex px-4">
         <input id="search-bar" class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search">
-        <button class="btn btn-outline-secondary text-light" type="submit">Buscar</button>
-    </form>
+        <button class="btn btn-outline-secondary text-light" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </form> -->
+    <div class="dropdown dropstart mx-2">
+        <button class="btn btn-outline-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-search"></i>
+        </button>
+        <div class="dropdown-menu">
+            <form class="px-4 py-3">
+                <div class="mb-3">
+                    <label for="exampleDropdownFormEmail1" class="form-label">Pesquisar</label>
+                    <input style="min-width: 260px;" type="text" class="form-control" id="exampleDropdownFormEmail1" placeholder="Digite aqui...">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="dropdown dropstart mx-2">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="#">Configurações</a>
+            <a @click="confirExit" class="dropdown-item" href="#">Sair</a>
+        </div>
+    </div>
 </div>

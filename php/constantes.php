@@ -24,3 +24,8 @@ Telefone para orçamento: (61) 996044897; E-mail : renzossnmail@gmail.com;
 Endereço : Riacho Fundo II Brasília DF.");
 define("META_KEYWORDS", "Renzo Nogueira, Renzo, Nogueira, Renzo Nogueira Desenvolvedor, Desenvolvedor, Desenvolvedor web, Desenvolvedor web Renzo Nogueira,
 Desenvolvedor web Renzo, Desenvolvedor web Nogueira, HTML, CSS, PHP, Blog, Riacho Fundo II, Brasília, DF, Brasília DF");
+
+// Links das páginas
+define("HOME_LINK", "http://" . ROOT . ROOT_FOLDER.'/adm/');
+define("BLOG", "http://" . ROOT . ROOT_FOLDER.'/adm/pages/blog.php');
+define("PORTIFOLIO", "http://" . ROOT . ROOT_FOLDER.'/adm/pages/portifolio.php');
