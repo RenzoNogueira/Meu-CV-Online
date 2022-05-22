@@ -13,6 +13,16 @@
     filter: blur(3px) brightness(0.8);
 }
 
+main {
+    overflow-x: hidden;
+    position: relative;
+    top: 100px;
+}
+
+main .dashbody .row {
+    padding-left: 65px;
+}
+
 /* Anima os cards */
 .animated.bounceInDown {
     animation-name: bounceInDown;
@@ -30,19 +40,21 @@
 /* Anima o menu lateral*/
 .animated.bounceInLeft {
     animation-name: fadeInLeft;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
     animation-fill-mode: both;
 }
 /* Anima o menu lateral */
 
 /* Navbar */
 .navbar {
-    backdrop-filter: brightness(0.8)!important;
+    background-color: #0000004a!important;
+    z-index: 999!important;
 }
 
-#app {
+body {
     background-color: var(--middle-grey);
 }
+
 
 /* Botões laterais */
 .btn-menu-lt:hover {
@@ -53,55 +65,21 @@
 }
 
 .btn-text-lt {
-    opacity: 0;
+    /* opacity: 0; */
     width: 230px;
     height: 50px;
     position: absolute;
     display: flex;
     top: 0px;
-    right: -10px;
-    justify-content: center;
+    right: -145px;
+    padding-left: 100px;
     align-items: center;
-}
-.btn-text-lt:hover {
-    opacity: 1;
-    right: -150px;
-
 }
 
 .menu-lt {
     max-height: 25em;
     max-width: 5em;
 }
-
-/* _________ */
-
-/* .menu-lt {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-} */
-
-/* .menu-lt:hover {
-
-} */
-/* 
-.customScrollbar-x {
-    overflow-y: hidden !important;
-    overflow-x: auto !important;
-}
-
-.menu-lt::-webkit-scrollbar {
-    width: 2px;
-}
-
-.menu-lt::-webkit-scrollbar-track {
-    background-color: var(--lavender-blush) !important;
-}
-
-.menu-lt::-webkit-scrollbar-thumb {
-    background-color: var(--middle-grey) !important;
-    border-radius: 50px !important;
-} */
 
 /* chat-bubble */
 .chat-bubble {
@@ -144,7 +122,6 @@
     border-radius: 0 0 0.5em 0.5em;
 }
      
-
 /* Animações */
 @keyframes bounceInDown {
     0% {

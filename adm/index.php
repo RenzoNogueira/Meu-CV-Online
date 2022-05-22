@@ -18,15 +18,15 @@ require "../php/host/verifica_login.php";
     <title><?php echo HOME; ?></title>
 </head>
 
-<body class="overflow-hidden">
+<body>
     <div id="app">
-        <nav class="navbar">
+        <nav class="navbar position-fixed w-100">
             <!-- Importa a nav-bar -->
             <?php require "../pages/admimPage/nav-bar.html"; ?>
         </nav>
         <main>
             <div class="row">
-                <div class="col-1">
+                <div class="col-1 position-fixed">
                     <!-- Importa a menu-lateral -->
                     <?php require "../pages/admimPage/menu-lateral.html"; ?>
                 </div>
@@ -34,7 +34,7 @@ require "../php/host/verifica_login.php";
                     <!-- Montar grid de cards -->
                     <div class="row">
                         <div class="col-sm-12 col-12 col-lg-6 col-xl-4 col-xxl-4 mt-4">
-                            <div style="z-index: 999!important;" class="card">
+                            <div style="z-index: 10!important;" class="card">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <div>
@@ -58,7 +58,7 @@ require "../php/host/verifica_login.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mt-4">
+                        <!-- <div class="col-md-4 mt-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Cadastrar novo produto</h5>
@@ -75,7 +75,7 @@ require "../php/host/verifica_login.php";
                                     <a href="cadastrar-pedido.php" class="btn btn-primary">Cadastrar</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -96,6 +96,8 @@ require "../php/host/verifica_login.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <!-- importar jquery-draggable cdn  -->
 
+    <!-- modulo -->
+    <script src="js/animate.js" type="text/javascript"></script>
     <script>
         // vue js
         var app = new Vue({
@@ -152,34 +154,8 @@ require "../php/host/verifica_login.php";
                         SELF.initializeChartViews()
                     });
                 },
-                animate: function() {
-                    SELF = this
-                    // Animação de entrada
-                    // animar os cards com efeito de giro na entrada
-                    $(".card").addClass("animated bounceInDown");
-                    // Animar o titulo com efeito de giro na entrada
-                    $(".card-title").addClass("animated bounceInDown");
-                    // Anima o menu lateral
-                    $(".menu-lateral").addClass("animated bounceInLeft");
 
-                    $(".menu-lateral").hover(function() {
-                        $(".dashbody").addClass("dashboard-body-escurecido");
-                    }, function() {
-                        $(".dashbody").removeClass("dashboard-body-escurecido");
-                    });
-                    // Ao efetuar focar na barra de pesquisa type search, o dashbody irá escurecer. Quando tirar o focus o dashbody voltará ao normal
-                    $("#search-bar").focus(function() {
-                        $(".dashbody").addClass("dashboard-body-escurecido");
-                    });
-                    //  Quando search-bar perder o foco
-                    $("#search-bar").blur(function() {
-                        $(".dashbody").removeClass("dashboard-body-escurecido");
-                    });
-                    // Poder arrastar o chatbot com o mouse
-                    $(".chat-bubble").draggable({
-                        handle: ".chat-bubble-header"
-                    });
-                },
+                // Gráficos
                 initializeChartViews: function() {
                     SELF = this
                     if (SELF.chartViewsIntance) {
@@ -250,8 +226,8 @@ require "../php/host/verifica_login.php";
                     });
                     SELF.loadingChart = false
                 }
-
             },
+
             beforeMount: function() {
                 SELF = this
                 // Pega total de visitas
@@ -261,9 +237,7 @@ require "../php/host/verifica_login.php";
                 }, 20000)
             },
             mounted: function() {
-                SELF = this
-                // Ao efetuar hover no menu-lateral, o dashbody irá escurecer
-                SELF.animate();
+                animate() // Função externa
             }
         })
     </script>
