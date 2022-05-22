@@ -26,6 +26,6 @@ define("META_KEYWORDS", "Renzo Nogueira, Renzo, Nogueira, Renzo Nogueira Desenvo
 Desenvolvedor web Renzo, Desenvolvedor web Nogueira, HTML, CSS, PHP, Blog, Riacho Fundo II, Brasília, DF, Brasília DF");
 
 // Links das páginas
-define("HOME_LINK", "http://" . ROOT . ROOT_FOLDER.'/adm/');
-define("BLOG", "http://" . ROOT . ROOT_FOLDER.'/adm/pages/blog.php');
-define("PORTIFOLIO", "http://" . ROOT . ROOT_FOLDER.'/adm/pages/portifolio.php');
+define("HOME_LINK", "http://" . ROOT . ROOT_FOLDER.'/');
+define("BLOG", "http://" . ROOT . ROOT_FOLDER.'/pages/blog.php');
+define("PORTIFOLIO", "http://" . ROOT . ROOT_FOLDER.'/pages/portifolio.php');
