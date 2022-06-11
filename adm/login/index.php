@@ -31,7 +31,6 @@ if (!empty($_COOKIE["user"])) {
 	<script src="../../frameworks/jQuery-3.6/jquery-3.6.0.min.js"></script>
 	<script src="../../frameworks/Bootstrap-5.0/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-	<script src="../../js/components/vue-componenst.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
 	<script src="js/script.js"></script>
 	<script>

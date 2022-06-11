@@ -1,11 +1,3 @@
-<?php
-if (!isset($_SESSION))  session_start();
-$LINK_ADM = "";
-if (isset($_SESSION["user"])) {
-    $LINK_ADM = "<li><a onClick='app.togleMobileMenu()' class='text-sm-center nav-link text-light' href='#'" . $_SESSION["user"] . "</a></li>";
-}
-
-?>
 // Component item-list-hystory
 Vue.component('item-list-hystory', {
 props: ['modelo', 'periodo', 'local', 'descricao'],
@@ -48,14 +40,13 @@ template: `
     <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-habilidades-gerais">Conhecimentos</a>
     <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-portifolio">Portifólio</a>
     <div class="dropdown">
-        <span class="cursor text-sm-center nav-link text-light dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-            Mais
-        </span>
+        <span class="cursor text-sm-center nav-link text-light dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">Mais</span>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
             <li><a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-blog">Blog</a></li>
             <li><a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#header-home">Contato</a></li>
-            <li> <a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-orcamento">*Orçamento</a></li>
-            <?php echo $LINK_ADM; ?>
+            <li><a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="#section-orcamento">*Orçamento</a></li>
+            <li><a onClick="app.togleMobileMenu()" class="text-sm-center nav-link text-light" href="adm/login/">Administração</a></li>
+        </ul>
     </div>
 </div>
 `

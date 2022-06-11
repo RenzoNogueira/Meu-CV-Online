@@ -7,7 +7,7 @@
 
 canvas {
     z-index: 1 !important;
-    position: absolute;
+    position: fixed;
     top: 0;
     opacity: 0.1;
     transform-origin: 0 0;
@@ -10937,7 +10937,7 @@ body {
 }
 
 body:after {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -11005,7 +11005,8 @@ h5,
 .img {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .login-wrap {

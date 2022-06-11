@@ -160,10 +160,10 @@ var app = new Vue({
         // Portifolio
         loadPortifolio: function(clear) {
             if (clear == true) {
-                app.portifolio.data = []
+                app.portifolio.data = [app.portifolio.data[0]]
                 app.moreDataPort.portifolio = true
                 app.portifolio.positionAfterItem = 1
-            }
+            } else
             if (this.moreDataPort.portifolio) {
                 $.post("php/load-portifolio.php", {
                         data: {

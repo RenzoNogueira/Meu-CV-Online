@@ -18,7 +18,7 @@ require "php/constantes.php";
     <meta name="description" content="<?php echo HOME_DESC;?>">
     <meta name="keywords" content="<?php echo META_KEYWORDS;?>">
     <meta name="robots" content="index, follow">
-    <link rel = "canonical" href="https://rz.dev.br" />
+    <link rel="canonical" href="https://rz.dev.br" />
 </head>
 
 <body class="customScrollbar-y">
