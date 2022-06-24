@@ -64,6 +64,8 @@
                         <dt class="col-12 col-md-4 text-uppercase">Idade :</dt>
                         <dd class="col-12 col-md-8 text-light">
                             {{new Date().getMonth() >= 5 ? ((new Date().getFullYear()) - 2001) : ((new Date().getFullYear()) - 2002)}}
+                            <!-- Se data for igual a 04/06 mostrar um icone de bolo -->
+                            <i v-if="new Date().getMonth() == 5 && new Date().getDate() == 4" class="m-2 fa-solid fa-cake-candles"></i> 
                         </dd>
                         <dt class="col-12 col-md-4 text-uppercase">Telefone :</dt>
                         <dd class="col-12 col-md-8 text-light">(61) 996044897</dd>
