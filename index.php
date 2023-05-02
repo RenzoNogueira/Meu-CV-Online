@@ -17,6 +17,7 @@ require "php/constantes.php";
     <title><?php echo HOME;?></title>
     <meta name="description" content="<?php echo HOME_DESC;?>">
     <meta name="keywords" content="<?php echo META_KEYWORDS;?>">
+    <meta name="author" content="Renzo Nogueira, Lux Andrew">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://rz.dev.br" />
 </head>
