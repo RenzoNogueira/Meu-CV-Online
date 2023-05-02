@@ -22,7 +22,7 @@ define("HOME_DESC",
 "Renzo da SilvaSoares Nogueira. Desenvolvedor web | Desenvolvedor Júnior;
 Telefone para orçamento: (61) 996044897; E-mail : renzossnmail@gmail.com;
 Endereço : Riacho Fundo II Brasília DF.");
-define("META_KEYWORDS", "Renzo Nogueira, Renzo, Nogueira, Renzo Nogueira Desenvolvedor, Desenvolvedor, Desenvolvedor web, Desenvolvedor web Renzo Nogueira,
+define("META_KEYWORDS", "Lux Andrew, lux andrew, LuxAndrew, Lux_andrew, Lux_Andrew, Lux-Andrew, LUX_ANDREW, Lux, Andrew, Renzo Nogueira, Renzo, Nogueira, Renzo Nogueira Desenvolvedor, Desenvolvedor, Desenvolvedor web, Desenvolvedor web Renzo Nogueira,
 Desenvolvedor web Renzo, Desenvolvedor web Nogueira, HTML, CSS, PHP, Blog, Riacho Fundo II, Brasília, DF, Brasília DF");
 
 // Links das páginas
